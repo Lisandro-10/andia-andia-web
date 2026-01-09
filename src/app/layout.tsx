@@ -63,13 +63,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={workSans.variable}>
-      <head>
-        <script
-          src="https://kit.fontawesome.com/e8b42d60e4.js"
-          crossOrigin="anonymous"
-          async
-        />
-      </head>
       <body className="font-sans antialiased bg-white text-black">
         <Header />
         <main>{children}</main>
