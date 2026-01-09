@@ -27,4 +27,8 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .border-b-3 {
+    border-bottom-width: 3px;
+  }
 }
