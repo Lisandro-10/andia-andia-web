@@ -117,7 +117,7 @@ export function Navbar() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`text-sm lg:text-base uppercase font-normal transition-all duration-200 pb-1.5 border-b-3 ${
+                    className={`text-sm lg:text-base text-white uppercase font-normal transition-all duration-200 pb-1.5 border-b-3 ${
                       pathname === link.href
                         ? 'border-primary-dark'
                         : isHomePage
