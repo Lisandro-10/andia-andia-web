@@ -1,3 +1,4 @@
+import { getProjectImageUrl, getProjectThumbnailUrl } from '@/lib/cdn'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -5,27 +6,27 @@ const featuredProjects = [
   {
     slug: 'casa-vl',
     name: 'Casa VL',
-    image: '/projects/VL.webp',
+    image: getProjectThumbnailUrl('casa-vl'),
   },
   {
     slug: 'casa-fdm',
     name: 'Casa FDM',
-    image: '/projects/FDM.webp',
+    image: getProjectThumbnailUrl('casa-fdm'),
   },
   {
     slug: 'casa-aa',
     name: 'Casa AA',
-    image: '/projects/AA.webp',
+    image: getProjectThumbnailUrl('casa-aa'),
   },
   {
     slug: 'casa-ga',
     name: 'Casa GA',
-    image: '/projects/GA.webp',
+    image: getProjectThumbnailUrl('casa-ga'),
   },
   {
     slug: 'bendita-piedra',
     name: 'Bendita Piedra',
-    image: '/projects/BP.webp',
+    image: getProjectThumbnailUrl('bendita-piedra'),
   },
 ]
 

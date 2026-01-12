@@ -1,3 +1,4 @@
+import { getCDNUrl, getLayoutUrl } from '@/lib/cdn'
 import Image from 'next/image'
 
 export function Hero() {
@@ -9,7 +10,7 @@ export function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/backgrounds/home.webp"
+          src={getCDNUrl("backgrounds/home.webp")}
           alt="Andia Estudio Background"
           fill
           priority
@@ -24,7 +25,7 @@ export function Hero() {
       <div className="relative z-10 text-center px-4 animate-fade-in">
         <div className="max-w-4xl mx-auto">
           <Image
-            src="/layout/logo-horizontal.png"
+            src={getLayoutUrl("logo-horizontal.png")}
             alt="ANDIA ANDIA"
             width={600}
             height={150}

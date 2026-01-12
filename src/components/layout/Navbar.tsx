@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { getLayoutUrl } from '@/lib/cdn'
 
 export function Navbar() {
   const [isSticky, setIsSticky] = useState(false)
@@ -103,7 +104,7 @@ export function Navbar() {
           <div className="flex items-center justify-between py-4">
             <Link href="/" className="relative z-50">
               <Image
-                src="/layout/logo-navbar.png"
+                src={getLayoutUrl('logo-navbar.png')}
                 alt="ANDIA ANDIA"
                 width={isSticky ? 60 : 100}
                 height={isSticky ? 60 : 100}

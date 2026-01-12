@@ -1,3 +1,4 @@
+import { getCDNUrl } from '@/lib/cdn'
 import Image from 'next/image'
 
 export function About() {
@@ -39,7 +40,7 @@ export function About() {
         {/* Image Column - Full height on desktop */}
         <div className="w-full lg:w-1/2 relative h-[400px] md:h-[600px] lg:h-auto">
           <Image
-            src="/about/team.webp"
+            src={getCDNUrl("about/team.webp")}
             alt="Marcelo y Guillermo Andia"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"

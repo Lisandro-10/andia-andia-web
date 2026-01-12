@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'andia-web-assets.s3.sa-east-1.amazonaws.com',
+        hostname: 'd1yl86jsjqb7lc.cloudfront.net',
         pathname: '/**',
       },
     ],

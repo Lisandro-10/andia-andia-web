@@ -1,9 +1,10 @@
+import { getCroquisUrl } from '@/lib/cdn'
 import Image from 'next/image'
 import Link from 'next/link'
 
 const croquis = [
-  '/croquis/croquis-1.png',
-  '/croquis/croquis-2.png',
+  getCroquisUrl('croquis-19.png'),
+  getCroquisUrl('croquis-20.png'),
 ]
 
 export function CroquisGallery() {
