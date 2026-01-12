@@ -12,7 +12,7 @@ const workSans = Work_Sans({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://andiaestudio.com'),
+  metadataBase: new URL('https://estudioandia.com'),
   title: {
     default: 'Andia Estudio | Arquitectura en Mendoza',
     template: '%s | Andia Estudio',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'es_AR',
-    url: 'https://andiaestudio.com',
+    url: 'https://estudioandia.com',
     siteName: 'Andia Estudio',
     title: 'Andia Estudio | Arquitectura en Mendoza',
     description: 'Estudio de arquitectura en Mendoza especializado en viviendas y desarrollos inmobiliarios.',
