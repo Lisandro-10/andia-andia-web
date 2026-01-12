@@ -7,13 +7,12 @@ const CDN_URL = process.env.NEXT_PUBLIC_CDN_URL || ''
  */
 export function getCDNUrl(path: string): string {
   // Si ya es una URL completa, retornarla sin modificar
-  console.log(path)
   if (path.startsWith('http://') || path.startsWith('https://')) {
     return path
   }
   
   // Remover slash inicial si existe
-  const cleanPath = path.startsWith('/') ? "/" + path : path;
+ const cleanPath = path.startsWith('/') ? path.slice(1) : path
   
   // Si no hay CDN_URL configurado, retornar la ruta original
   if (!CDN_URL) {

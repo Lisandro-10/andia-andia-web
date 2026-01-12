@@ -5,10 +5,8 @@ import Link from 'next/link'
 import { getLayoutUrl } from '@/lib/cdn'
 
 export default function Error({
-  error,
   reset,
 }: {
-  error: Error & { digest?: string }
   reset: () => void
 }) {
   return (

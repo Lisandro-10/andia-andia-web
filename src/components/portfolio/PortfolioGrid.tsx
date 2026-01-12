@@ -4,10 +4,9 @@ import { Project } from '@/types'
 
 interface PortfolioGridProps {
   projects: Project[]
-  showCroquis?: boolean
 }
 
-export function PortfolioGrid({ projects, showCroquis = false }: PortfolioGridProps) {
+export function PortfolioGrid({ projects }: PortfolioGridProps) {
   return (
     <div className="section-container py-8">
       <div className="flex flex-wrap justify-start">

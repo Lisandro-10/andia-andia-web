@@ -1,4 +1,4 @@
-import { getProjectImageUrl, getProjectThumbnailUrl } from '@/lib/cdn'
+import { getProjectThumbnailUrl } from '@/lib/cdn'
 import Image from 'next/image'
 import Link from 'next/link'
 
