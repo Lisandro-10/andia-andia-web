@@ -72,7 +72,7 @@ export function getAllProjectGalleryImages(
  * @returns URL completa
  */
 export function getProjectThumbnailUrl(slug: string): string {
-  return getCDNUrl(`projects/${slug}/thumbnail`)
+  return getCDNUrl(`projects/${slug}/thumbnail.webp`)
 }
 
 /**
