@@ -3,6 +3,7 @@ import { Work_Sans } from 'next/font/google'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import './globals.css'
+import { Analytics } from '@vercel/analytics/next'
 
 const workSans = Work_Sans({
   subsets: ['latin'],
@@ -77,6 +78,7 @@ export default function RootLayout({
       <body className="font-sans antialiased bg-white text-black">
         <Header />
         <main>{children}</main>
+        <Analytics />
         <Footer />
       </body>
     </html>

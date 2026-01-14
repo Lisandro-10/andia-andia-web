@@ -12,9 +12,10 @@ export function ContactForm() {
     setSubmitStatus('idle')
 
     const formData = new FormData(e.currentTarget)
+    const FORM_KEY = process.env.FORMSUBMIT_KEY;
 
     try {
-      const response = await fetch('https://formsubmit.co/e444e3600d869b32a3b896c74047ef53', {
+      const response = await fetch(`https://formsubmit.co/${FORM_KEY}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
