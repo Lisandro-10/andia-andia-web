@@ -17,7 +17,7 @@ export default async function PortfolioPage() {
   return (
     <main className="min-h-screen">
       {/* Header */}
-      <header className="relative md:h-[30vh] h-[27vh] flex items-end pb-8">
+      <header className="relative md:h-[35vh] h-[38vh] flex items-end pb-8">
         <Image
           src={getBackgroundUrl('portfolio-hero.webp')}
           alt="Hero portfolio"
