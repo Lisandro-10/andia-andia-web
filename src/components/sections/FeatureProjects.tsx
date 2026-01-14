@@ -1,6 +1,9 @@
 import { getProjectThumbnailUrl } from '@/lib/cdn'
 import Image from 'next/image'
 import Link from 'next/link'
+import { getBlurDataURL } from '@/lib/generated/blur-placeholders'
+
+const FALLBACK_BLUR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAnSURBVHgB7coxAQAACMOwgaL5d4Ir4EBSELshzpV0UNNBTQc1HdR0AKt6AwnwkFE3AAAAAElFTkSuQmCC'
 
 const featuredProjects = [
   {
@@ -58,6 +61,8 @@ export function FeaturedProjects() {
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover will-change-transform transition-transform duration-500 ease-out scale-100 group-hover:scale-[1.03]"
+                    placeholder="blur"
+                    blurDataURL={getBlurDataURL(project.image) || FALLBACK_BLUR}
                   />
                   <div className="absolute inset-0 bg-black/0 transition-colors duration-500 ease-out group-hover:bg-black/10" />
                 </div>
@@ -85,6 +90,8 @@ export function FeaturedProjects() {
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover will-change-transform transition-transform duration-500 ease-out scale-100 group-hover:scale-[1.03]"
+                    placeholder="blur"
+                    blurDataURL={getBlurDataURL(project.image) || FALLBACK_BLUR}
                   />
                   <div className="absolute inset-0 bg-black/0 transition-colors duration-500 ease-out group-hover:bg-black/10" />
                 </div>

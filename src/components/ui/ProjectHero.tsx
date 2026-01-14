@@ -1,4 +1,7 @@
 import Image from 'next/image'
+import { getBlurDataURL } from '@/lib/generated/blur-placeholders'
+
+const FALLBACK_BLUR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAnSURBVHgB7coxAQAACMOwgaL5d4Ir4EBSELshzpV0UNNBTQc1HdR0AKt6AwnwkFE3AAAAAElFTkSuQmCC'
 
 interface ProjectHeroProps {
   name: string
@@ -18,6 +21,8 @@ export function ProjectHero({ name, heroImage }: ProjectHeroProps) {
           className="object-cover"
           sizes="100vw"
           quality={90}
+          placeholder="blur"
+          blurDataURL={getBlurDataURL(heroImage) || FALLBACK_BLUR}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/40" />
       </div>

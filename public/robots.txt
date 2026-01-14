@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+
+# Host
+Host: https://estudioandia.com
+
+# Sitemaps
+Sitemap: https://estudioandia.com/sitemap.xml

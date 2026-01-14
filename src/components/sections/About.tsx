@@ -1,10 +1,13 @@
 import { getCDNUrl } from '@/lib/cdn'
 import Image from 'next/image'
+import { getBlurDataURL } from '@/lib/generated/blur-placeholders'
+
+const FALLBACK_BLUR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAnSURBVHgB7coxAQAACMOwgaL5d4Ir4EBSELshzpV0UNNBTQc1HdR0AKt6AwnwkFE3AAAAAElFTkSuQmCC'
 
 export function About() {
   return (
     <section id="about" className="relative bg-gray-darker group">
-      <div className="flex flex-col lg:flex-row lg:min-h-screen">
+      <div className="section-container flex flex-col lg:flex-row lg:min-h-screen">
         {/* Text Column */}
         <div className="w-full lg:w-1/2 py-12 md:py-16 lg:py-20 px-4 md:px-8 lg:px-12 flex items-center">
           <div className="space-y-6 w-full">
@@ -46,6 +49,8 @@ export function About() {
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover"
             priority
+            placeholder="blur"
+            blurDataURL={getBlurDataURL("layout/about.webp") || FALLBACK_BLUR}
           />
         </div>
       </div>

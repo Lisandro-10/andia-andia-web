@@ -6,6 +6,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { getLayoutUrl } from '@/lib/cdn'
+import { getBlurDataURL } from '@/lib/generated/blur-placeholders'
+
+const FALLBACK_BLUR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAnSURBVHgB7coxAQAACMOwgaL5d4Ir4EBSELshzpV0UNNBTQc1HdR0AKt6AwnwkFE3AAAAAElFTkSuQmCC'
 
 export function Navbar() {
   const [isSticky, setIsSticky] = useState(false)
@@ -103,14 +106,17 @@ export function Navbar() {
         <div className="section-container">
           <div className="flex items-center justify-between py-4">
             <Link href="/" className="relative z-50">
-              <Image
-                src={getLayoutUrl('logo-navbar.png')}
-                alt="ANDIA ANDIA"
-                width={isSticky ? 60 : 100}
-                height={isSticky ? 60 : 100}
-                className="transition-all duration-300"
-                priority
-              />
+              <div>
+                <Image
+                  src={getLayoutUrl('logo-navbar.png')}
+                  alt="ANDIA ANDIA"
+                  width={100}
+                  height={100}
+                  priority
+                  placeholder="blur"
+                  blurDataURL={getBlurDataURL('layout/logo-navbar.png') || FALLBACK_BLUR}
+                />
+              </div>
             </Link>
 
             <ul className="hidden md:flex items-center gap-8 lg:gap-10 mt-3">
@@ -136,7 +142,7 @@ export function Navbar() {
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`md:hidden relative z-50 p-2 focus:outline-none ${isMobileMenuOpen ? 'text-white' : 'text-black'}`}
+              className="md:hidden relative z-50 p-2 focus:outline-none text-white"
               aria-label="Toggle menu"
             >
               <div className="w-6 h-5 flex flex-col justify-between">

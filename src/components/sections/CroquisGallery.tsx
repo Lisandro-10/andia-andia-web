@@ -1,6 +1,9 @@
 import { getCroquisUrl } from '@/lib/cdn'
 import Image from 'next/image'
 import Link from 'next/link'
+import { getBlurDataURL } from '@/lib/generated/blur-placeholders'
+
+const FALLBACK_BLUR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAnSURBVHgB7coxAQAACMOwgaL5d4Ir4EBSELshzpV0UNNBTQc1HdR0AKt6AwnwkFE3AAAAAElFTkSuQmCC'
 
 const croquis = [
   getCroquisUrl('croquis-19.png'),
@@ -10,7 +13,7 @@ const croquis = [
 export function CroquisGallery() {
   return (
     <section className="bg-white py-8 md:py-12 lg:py-16">
-      <div className="flex flex-col lg:flex-row gap-8 lg:gap-0 items-center lg:items-stretch">
+      <div className="section-container flex flex-col lg:flex-row gap-8 lg:gap-0 items-center lg:items-stretch">
         {/* Images Column */}
         <div className="w-full lg:w-1/2 px-4 lg:px-0">
           <div className="flex flex-col gap-4 w-full h-full overflow-hidden">
@@ -21,10 +24,12 @@ export function CroquisGallery() {
               >
                 <Image
                   src={image}
-                  alt={`Croquis ${index + 1}`}
+                  alt={`Croquis arquitectónico ${index + 1} - Boceto conceptual del estudio Andia`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
+                  placeholder="blur"
+                  blurDataURL={getBlurDataURL(image) || FALLBACK_BLUR}
                 />
               </div>
             ))}

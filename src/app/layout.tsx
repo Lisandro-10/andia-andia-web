@@ -8,7 +8,7 @@ const workSans = Work_Sans({
   subsets: ['latin'],
   variable: '--font-work-sans',
   display: 'swap',
-  weight: ['100', '300', '400', '500', '700'],
+  weight: ['300', '400', '500'], // Reducido: solo pesos utilizados en el proyecto
 })
 
 export const metadata: Metadata = {
@@ -63,6 +63,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={workSans.variable}>
+      <head>
+        <link
+          rel="preconnect"
+          href="https://d1yl86jsjqb7lc.cloudfront.net"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="dns-prefetch"
+          href="https://d1yl86jsjqb7lc.cloudfront.net"
+        />
+      </head>
       <body className="font-sans antialiased bg-white text-black">
         <Header />
         <main>{children}</main>
