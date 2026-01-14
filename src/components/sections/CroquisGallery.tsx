@@ -12,7 +12,7 @@ const croquis = [
 
 export function CroquisGallery() {
   return (
-    <section className="bg-white py-8 md:py-12 lg:py-16">
+    <section className="bg-gray-darker py-8 md:py-12 lg:py-16">
       <div className="section-container flex flex-col lg:flex-row gap-8 lg:gap-0 items-center lg:items-stretch">
         {/* Images Column */}
         <div className="w-full lg:w-1/2 px-4 lg:px-0">
@@ -40,16 +40,16 @@ export function CroquisGallery() {
         <div className="w-full lg:w-1/2 px-4 lg:px-8 flex flex-col justify-center space-y-6">
           <div className="w-1/4 h-4 bg-primary-light" />
 
-          <h1 className="text-black text-3xl md:text-4xl lg:text-5xl font-light">
+          <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-light">
             &quot;EL CROQUIS&quot;
           </h1>
 
-          <h2 className="text-black text-xl md:text-2xl font-light opacity-30">
+          <h2 className="text-white text-xl md:text-2xl font-light opacity-30">
             Nuestra representación y concepción de nuestros proyectos
             arquitectónicos
           </h2>
 
-          <p className="text-black text-base md:text-lg font-light leading-relaxed mt-8">
+          <p className="text-white text-base md:text-lg font-light leading-relaxed mt-8">
             Explora nuestra colección de croquis, bocetos iniciales y conceptos
             creativos. Estas imágenes representan el punto de partida de cada
             proyecto, donde las ideas toman forma y se desarrollan los
@@ -61,7 +61,7 @@ export function CroquisGallery() {
           <div className="pt-4">
             <Link
               href="/portfolio?category=croquis"
-              className="inline-block bg-white hover:bg-primary-light text-primary border-2 border-primary-light px-8 py-3 rounded-full transition-colors duration-300"
+              className="inline-block hover:bg-primary-light text-white border-2 border-primary-light px-8 py-3 rounded-full transition-colors duration-300"
             >
               Ver más
             </Link>

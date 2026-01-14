@@ -25,10 +25,10 @@ const services = [
 
 export function Services() {
   return (
-    <section className="bg-white py-16 md:py-20 lg:py-24">
+    <section id="services" className="bg-gray-darker py-16 md:py-20 lg:py-24">
       <div className="section-container">
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center text-white mb-12 md:mb-16">
           <h2 className="section-heading">Nuestros Servicios</h2>
         </div>
 
@@ -48,7 +48,7 @@ export function Services() {
               </div>
 
               {/* Title */}
-              <h4 className="text-xl md:text-2xl font-normal mb-6">
+              <h4 className="text-xl md:text-2xl font-normal mb-6 text-white">
                 {service.title}
               </h4>
 
@@ -57,7 +57,7 @@ export function Services() {
                 {service.items.map((item, itemIndex) => (
                   <li
                     key={itemIndex}
-                    className="text-base md:text-lg font-normal"
+                    className="text-base md:text-lg font-normal text-white"
                   >
                     {item}
                   </li>
