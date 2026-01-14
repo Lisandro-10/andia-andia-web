@@ -32,9 +32,9 @@ export function Footer() {
   ]
 
   const sitemapLinks = [
-    { href: '#services', label: 'Servicios' },
+    { href: '/#services', label: 'Servicios' },
     { href: '/portfolio', label: 'Proyectos' },
-    { href: '#contact', label: 'Contacto' },
+    { href: '/#contact', label: 'Contacto' },
   ]
 
   return (
