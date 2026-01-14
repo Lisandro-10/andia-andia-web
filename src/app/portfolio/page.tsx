@@ -103,7 +103,7 @@ export default async function PortfolioPage() {
         </Suspense>
 
                 {/* FAQ Section */}
-        <section className="py-12 md:py-16 lg:py-20 bg-gray-50">
+        {/* <section className="py-12 md:py-16 lg:py-20 bg-gray-50">
           <div className="section-container">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-2xl md:text-3xl font-light mb-8 md:mb-12 text-center">
@@ -158,7 +158,7 @@ export default async function PortfolioPage() {
               </dl>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* CTA Section */}
         <section className="py-12 md:py-16 lg:py-20 bg-gray-darker">
