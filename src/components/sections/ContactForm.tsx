@@ -43,11 +43,11 @@ export function ContactForm() {
   }
 
   return (
-    <section id="contact" className="bg-white py-16 md:py-20 lg:py-24">
+    <section id="contact" className="bg-gray-darker py-16 md:py-20 lg:py-24">
       <div className="section-container max-w-4xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-normal text-black mb-12">
+          <h2 className="text-3xl md:text-4xl font-normal text-white mb-12">
             ¡Hablemos de tu proyecto! Contacta con nuestro equipo.
           </h2>
         </div>
@@ -58,7 +58,7 @@ export function ContactForm() {
           <div className="flex flex-col md:flex-row md:items-center gap-4">
             <label
               htmlFor="nombre"
-              className="md:w-1/3 text-base md:text-lg font-medium"
+              className="md:w-1/3 text-white md:text-lg font-medium"
             >
               Nombre
             </label>
@@ -69,7 +69,7 @@ export function ContactForm() {
                 name="nombre"
                 placeholder="Tu nombre"
                 required
-                className="w-full px-4 py-2 border-2 border-primary rounded bg-white focus:outline-none focus:border-primary-dark transition-colors"
+                className="w-full px-4 py-2 border-2 border-primary rounded bg-gray-darker text-white focus:outline-none focus:border-primary-dark transition-colors"
               />
             </div>
           </div>
@@ -78,7 +78,7 @@ export function ContactForm() {
           <div className="flex flex-col md:flex-row md:items-center gap-4">
             <label
               htmlFor="email"
-              className="md:w-1/3 text-base md:text-lg font-medium"
+              className="md:w-1/3 text-white md:text-lg font-medium"
             >
               Correo
             </label>
@@ -89,7 +89,7 @@ export function ContactForm() {
                 name="email"
                 placeholder="Tu email"
                 required
-                className="w-full px-4 py-2 border-2 border-primary rounded bg-white focus:outline-none focus:border-primary-dark transition-colors"
+                className="w-full px-4 py-2 border-2 border-primary rounded bg-gray-darker text-white focus:outline-none focus:border-primary-dark transition-colors"
               />
             </div>
           </div>
@@ -98,7 +98,7 @@ export function ContactForm() {
           <div className="flex flex-col md:flex-row md:items-start gap-4">
             <label
               htmlFor="message"
-              className="md:w-1/3 text-base md:text-lg font-medium md:pt-2"
+              className="md:w-1/3 text-white md:text-lg font-medium md:pt-2"
             >
               Descripción
             </label>
@@ -109,7 +109,7 @@ export function ContactForm() {
                 placeholder="Tu consulta"
                 required
                 rows={5}
-                className="w-full px-4 py-2 border-2 border-primary rounded bg-white focus:outline-none focus:border-primary-dark transition-colors resize-none"
+                className="w-full px-4 py-2 border-2 border-primary rounded bg-gray-darker text-white focus:outline-none focus:border-primary-dark transition-colors resize-none"
               />
             </div>
           </div>
@@ -121,19 +121,19 @@ export function ContactForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full md:w-auto bg-white hover:bg-primary-light text-primary border-2 border-primary-light px-8 py-3 rounded-full transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full md:w-auto bg-gray-darker hover:bg-primary-light text-white border-2 border-primary-light px-8 py-3 rounded-full transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Enviando...' : 'Enviar'}
               </button>
 
               {/* Status Messages */}
               {submitStatus === 'success' && (
-                <p className="mt-4 text-green-600">
+                <p className="mt-4 text-green-400">
                   ¡Mensaje enviado exitosamente! Te contactaremos pronto.
                 </p>
               )}
               {submitStatus === 'error' && (
-                <p className="mt-4 text-red-600">
+                <p className="mt-4 text-red-400">
                   Hubo un error al enviar el mensaje. Por favor intenta
                   nuevamente.
                 </p>

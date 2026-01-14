@@ -47,16 +47,16 @@ export function PortfolioContent({ allProjects, croquisProjects }: PortfolioCont
   return (
     <>
       {/* Filter */}
-      <div className="flex justify-center py-8">
+      <div className="bg-gray-darker flex justify-center py-8">
         <div className="flex flex-wrap gap-0">
           {categories.map((cat) => (
             <button
               key={cat.value}
               onClick={() => handleFilter(cat.value)}
-              className={`px-4 py-3 text-base md:text-lg font-normal transition-all duration-400 ${
+              className={`px-4 py-3 text-white md:text-lg font-normal transition-all duration-400 ${
                 activeCategory === cat.value
-                  ? 'bg-white text-orange'
-                  : 'bg-orange text-white hover:bg-white hover:text-orange'
+                  ? 'bg-gray-darker'
+                  : 'bg-orange hover:bg-gray-darker'
               }`}
             >
               {cat.label}

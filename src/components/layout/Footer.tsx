@@ -38,7 +38,7 @@ export function Footer() {
   ]
 
   return (
-    <footer id="footer" className="bg-gray-darker py-12 px-4">
+    <footer id="footer" className="bg-gray-darker py-12 px-4 border-t border-gray-dark/20">
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
           {/* Left Section - Logo & Social Links */}
