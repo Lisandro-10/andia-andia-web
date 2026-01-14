@@ -4,6 +4,7 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/next'
+import { FloatingWhatsApp } from '@/components/ui/FloatingWhatsApp'
 
 const workSans = Work_Sans({
   subsets: ['latin'],
@@ -15,8 +16,8 @@ const workSans = Work_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL('https://estudioandia.com'),
   title: {
-    default: 'Andia Estudio | Arquitectura en Mendoza',
-    template: '%s | Andia Estudio',
+    default: 'Andia Andia | Arquitectura en Mendoza',
+    template: '%s | Andia Andia',
   },
   description:
     'Estudio de arquitectura en Mendoza, Argentina. Diseño de viviendas unifamiliares, complejos residenciales y desarrollos inmobiliarios con enfoque en calidad arquitectónica.',
@@ -26,21 +27,21 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'es_AR',
     url: 'https://estudioandia.com',
-    siteName: 'Andia Estudio',
-    title: 'Andia Estudio | Arquitectura en Mendoza',
+    siteName: 'Andia Andia',
+    title: 'Andia Andia | Arquitectura en Mendoza',
     description: 'Estudio de arquitectura en Mendoza especializado en viviendas y desarrollos inmobiliarios.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Andia Estudio Arquitectura',
+        alt: 'Andia Andia Arquitectura e Ingeniería',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Andia Estudio | Arquitectura en Mendoza',
+    title: 'Andia Andia | Arquitectura en Mendoza',
     description: 'Estudio de arquitectura en Mendoza especializado en viviendas y desarrollos inmobiliarios.',
     images: ['/og-image.jpg'],
   },
@@ -80,6 +81,9 @@ export default function RootLayout({
         <main>{children}</main>
         <Analytics />
         <Footer />
+        <FloatingWhatsApp 
+          phoneNumber="5492615371582"
+        />
       </body>
     </html>
   )
