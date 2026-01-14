@@ -104,10 +104,10 @@ export function Footer() {
                 </p>
                 <p>
                   <a 
-                    href="mailto:info@andiaestudio.com"
+                    href="mailto:andiaarquing@gmail.com"
                     className="hover:text-primary transition-colors duration-200"
                   >
-                    info@andiaestudio.com
+                    andiaarquing@gmail.com
                   </a>
                 </p>
               </address>
