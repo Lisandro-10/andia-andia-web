@@ -35,7 +35,7 @@ const featuredProjects = [
 
 export function FeaturedProjects() {
   return (
-    <section className="bg-gray-darker py-16 md:py-20 lg:py-24">
+    <section className="bg-gray-darker py-10 md:py-20 lg:py-24">
       <div className="section-container">
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">

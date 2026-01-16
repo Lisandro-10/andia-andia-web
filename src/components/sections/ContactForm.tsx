@@ -58,7 +58,7 @@ export function ContactForm() {
           <div className="flex flex-col md:flex-row md:items-center gap-4">
             <label
               htmlFor="nombre"
-              className="md:w-1/3 text-white md:text-lg font-medium"
+              className="md:w-1/3 text-primary md:text-lg font-medium"
             >
               Nombre
             </label>
@@ -69,7 +69,7 @@ export function ContactForm() {
                 name="nombre"
                 placeholder="Tu nombre"
                 required
-                className="w-full px-4 py-2 border-2 border-primary rounded bg-gray-darker text-white focus:outline-none focus:border-primary-dark transition-colors"
+                className="w-full px-4 py-2 border-b-2 border-gray-dark bg-gray-darker text-white focus:outline-none focus:border-primary-dark transition-colors"
               />
             </div>
           </div>
@@ -78,7 +78,7 @@ export function ContactForm() {
           <div className="flex flex-col md:flex-row md:items-center gap-4">
             <label
               htmlFor="email"
-              className="md:w-1/3 text-white md:text-lg font-medium"
+              className="md:w-1/3 text-primary md:text-lg font-medium"
             >
               Correo
             </label>
@@ -89,7 +89,7 @@ export function ContactForm() {
                 name="email"
                 placeholder="Tu email"
                 required
-                className="w-full px-4 py-2 border-2 border-primary rounded bg-gray-darker text-white focus:outline-none focus:border-primary-dark transition-colors"
+                className="w-full px-4 py-2 border-b-2 border-gray-dark bg-gray-darker text-white focus:outline-none focus:border-primary-dark transition-colors"
               />
             </div>
           </div>
@@ -98,7 +98,7 @@ export function ContactForm() {
           <div className="flex flex-col md:flex-row md:items-start gap-4">
             <label
               htmlFor="message"
-              className="md:w-1/3 text-white md:text-lg font-medium md:pt-2"
+              className="md:w-1/3 text-primary md:text-lg font-medium md:pt-2"
             >
               Descripción
             </label>
@@ -109,7 +109,7 @@ export function ContactForm() {
                 placeholder="Tu consulta"
                 required
                 rows={5}
-                className="w-full px-4 py-2 border-2 border-primary rounded bg-gray-darker text-white focus:outline-none focus:border-primary-dark transition-colors resize-none"
+                className="w-full px-4 py-2 border-b-2 border-gray-dark bg-gray-darker text-white focus:outline-none focus:border-primary-dark transition-colors resize-none"
               />
             </div>
           </div>

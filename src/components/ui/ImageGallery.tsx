@@ -1,7 +1,11 @@
 'use client'
 
-import { useEffect, useRef, useCallback } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
+import Lightbox from 'yet-another-react-lightbox'
+import Counter from 'yet-another-react-lightbox/plugins/counter'
+import 'yet-another-react-lightbox/styles.css'
+import 'yet-another-react-lightbox/plugins/counter.css'
 import { getBlurDataURL } from '@/lib/generated/blur-placeholders'
 
 // Placeholder genérico para imágenes sin blur data
@@ -12,79 +16,9 @@ interface ImageGalleryProps {
   projectName: string
 }
 
-// Tipo para ViewerJS (evitar import estático)
-type ViewerInstance = {
-  destroy: () => void
-  show: () => void
-}
-
 export function ImageGallery({ images, projectName }: ImageGalleryProps) {
-  const galleryRef = useRef<HTMLDivElement>(null)
-  const viewerRef = useRef<ViewerInstance | null>(null)
-  const viewerLoadedRef = useRef(false)
-
-  // Función para cargar ViewerJS dinámicamente
-  const loadViewer = useCallback(async () => {
-    if (viewerLoadedRef.current || !galleryRef.current) return
-
-    try {
-      // Cargar CSS dinámicamente
-      if (!document.querySelector('link[href*="viewer.css"]')) {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.css'
-        document.head.appendChild(link)
-        // Esperar a que el CSS cargue
-        await new Promise((resolve) => {
-          link.onload = resolve
-          link.onerror = resolve // Continuar aunque falle
-        })
-      }
-
-      // Dynamic import de ViewerJS
-      const ViewerModule = await import('viewerjs')
-      const Viewer = ViewerModule.default
-
-      if (galleryRef.current && !viewerRef.current) {
-        viewerRef.current = new Viewer(galleryRef.current, {
-          inline: false,
-          button: false,
-          navbar: false,
-          title: true,
-          toolbar: true,
-          tooltip: false,
-          movable: false,
-          zoomable: true,
-          rotatable: false,
-          scalable: false,
-          transition: false,
-          fullscreen: true,
-          keyboard: false,
-        })
-        viewerLoadedRef.current = true
-      }
-    } catch (error) {
-      console.error('Error loading ViewerJS:', error)
-    }
-  }, [])
-
-  // Cleanup al desmontar
-  useEffect(() => {
-    return () => {
-      if (viewerRef.current) {
-        viewerRef.current.destroy()
-        viewerRef.current = null
-      }
-    }
-  }, [])
-
-  // Handler para click en imagen - carga viewer si no está cargado
-  const handleImageClick = useCallback(async () => {
-    if (!viewerLoadedRef.current) {
-      await loadViewer()
-    }
-    // El viewer se activará automáticamente con el click
-  }, [loadViewer])
+  const [open, setOpen] = useState(false)
+  const [photoIndex, setPhotoIndex] = useState(0)
 
   // Distribuir imágenes en 3 columnas para mantener el layout original
   const distributeImages = () => {
@@ -97,6 +31,16 @@ export function ImageGallery({ images, projectName }: ImageGalleryProps) {
 
   const columns = distributeImages()
 
+  // Preparar slides para el lightbox
+  const slides = images.map((src) => ({ src }))
+
+  // Handler para abrir lightbox con la imagen clickeada
+  const handleImageClick = (imageUrl: string) => {
+    const index = images.indexOf(imageUrl)
+    setPhotoIndex(index)
+    setOpen(true)
+  }
+
   return (
     <section className="bg-gray-light-2 py-16 md:py-20 lg:py-24">
       <div className="section-container">
@@ -106,11 +50,7 @@ export function ImageGallery({ images, projectName }: ImageGalleryProps) {
         </div>
 
         {/* Gallery Grid - Masonry Layout */}
-        <div
-          ref={galleryRef}
-          className="flex flex-col md:flex-row justify-center items-start gap-2"
-          onClick={handleImageClick}
-        >
+        <div className="flex flex-col md:flex-row justify-center items-start gap-2">
           {columns.map((column, columnIndex) => (
             <div
               key={columnIndex}
@@ -126,6 +66,7 @@ export function ImageGallery({ images, projectName }: ImageGalleryProps) {
                   <div
                     key={imageIndex}
                     className="relative w-full overflow-hidden cursor-pointer group"
+                    onClick={() => handleImageClick(image)}
                   >
                     <div className="relative aspect-[4/3]">
                       <Image
@@ -133,11 +74,13 @@ export function ImageGallery({ images, projectName }: ImageGalleryProps) {
                         alt={`${projectName} - Imagen ${globalIndex}`}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover"
+                        className="object-cover transition-opacity duration-300 group-hover:opacity-90"
                         loading={isAboveFold ? 'eager' : 'lazy'}
                         placeholder="blur"
                         blurDataURL={blurDataURL}
                       />
+                      {/* Overlay hover */}
+                      <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
                     </div>
                   </div>
                 )
@@ -146,6 +89,38 @@ export function ImageGallery({ images, projectName }: ImageGalleryProps) {
           ))}
         </div>
       </div>
+
+      {/* Lightbox */}
+      <Lightbox
+        open={open}
+        close={() => setOpen(false)}
+        index={photoIndex}
+        slides={slides}
+        plugins={[Counter]}
+        counter={{
+          container: { style: { top: 0, left: 0, right: 0 } },
+        }}
+        carousel={{
+          finite: images.length <= 1,
+        }}
+        controller={{
+          closeOnBackdropClick: true,
+          closeOnPullDown: true,
+          closeOnPullUp: false,
+        }}
+        toolbar={{
+          buttons: [],
+        }}
+        styles={{
+          container: {
+            backgroundColor: 'rgba(0, 0, 0, 0.95)',
+          },
+        }}
+        render={{
+          buttonPrev: images.length > 1 ? undefined : () => null,
+          buttonNext: images.length > 1 ? undefined : () => null,
+        }}
+      />
     </section>
   )
 }
