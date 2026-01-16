@@ -11,34 +11,36 @@ export function ContactForm() {
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
-    const formData = new FormData(e.currentTarget)
-    const FORM_KEY = process.env.FORMSUBMIT_KEY;
+    const form = e.currentTarget;
 
     try {
-      const response = await fetch(`https://formsubmit.co/${FORM_KEY}`, {
-        method: 'POST',
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify({
-          nombre: formData.get('nombre'),
-          email: formData.get('email'),
-          message: formData.get('message'),
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          name: (form.elements.namedItem("nombre") as HTMLInputElement).value,
+          email: (form.elements.namedItem("email") as HTMLInputElement).value,
+          subject: "Consulta de proyecto",
+          message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
         }),
-      })
+      });
 
-      if (response.ok) {
-        setSubmitStatus('success')
-        e.currentTarget.reset()
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus('success');
+        form.reset();
       } else {
-        setSubmitStatus('error')
+        setSubmitStatus('error');
       }
-    } catch (error) {
-      console.error('Error submitting form:', error)
-      setSubmitStatus('error')
+    } catch {
+      setSubmitStatus('error');
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
   }
 
