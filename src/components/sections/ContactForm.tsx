@@ -45,7 +45,7 @@ export function ContactForm() {
   }
 
   return (
-    <section id="contact" className="bg-gray-darker py-16 md:py-20 lg:py-24">
+    <section id="contact" className="py-16 md:py-20 lg:py-24">
       <div className="section-container max-w-4xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">

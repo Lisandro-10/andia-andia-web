@@ -6,7 +6,7 @@ const FALLBACK_BLUR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAY
 
 export function About() {
   return (
-    <section id="about" className="relative bg-gray-darker group">
+    <section id="about" className="relative group">
       <div className="lg:section-container lg:pr-0 flex flex-col lg:flex-row lg:min-h-screen">
         {/* Text Column */}
         <div className="w-full lg:w-1/2 py-12 md:py-16 lg:py-20 px-4 md:px-8 lg:px-12 flex items-center">

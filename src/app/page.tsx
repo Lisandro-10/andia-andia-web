@@ -19,12 +19,6 @@ export const metadata: Metadata = {
     'trabajos arquitecto Mendoza',
     'realizaciones arquitectónicas',
   ],
-  openGraph: {
-    title: 'Andia Andia - Estudio de Arquitectura en Mendoza',
-    description: 'Descubre nuestros proyectos de arquitectura e ingeniería en Mendoza',
-    images: ['/og-home.jpg', 'https://d1yl86jsjqb7lc.cloudfront.net/hero-home.jpg'],
-    type: 'website',
-  },
   alternates: {
     canonical: 'https://estudioandia.com/',
   },
