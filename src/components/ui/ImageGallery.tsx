@@ -42,7 +42,7 @@ export function ImageGallery({ images, projectName }: ImageGalleryProps) {
   }
 
   return (
-    <section className="bg-gray-light-2 py-16 md:py-20 lg:py-24">
+    <section className="py-16 md:py-20 lg:py-24">
       <div className="section-container">
         {/* Section Header */}
         <div className="text-center mb-12">

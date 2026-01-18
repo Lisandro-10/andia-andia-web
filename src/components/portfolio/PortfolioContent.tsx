@@ -56,9 +56,9 @@ export function PortfolioContent({ allProjects, croquisProjects }: PortfolioCont
           <span className="text-white">Portfolio</span>
         </div>
       </nav>
-      
+
       {/* Filter */}
-      <div className="bg-gray-darker flex justify-center py-8">
+      <div className="flex justify-center py-8">
         <div className="flex flex-wrap gap-0">
           {categories.map((cat) => (
             <button

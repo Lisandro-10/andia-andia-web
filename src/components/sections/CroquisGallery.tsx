@@ -12,7 +12,7 @@ const croquis = [
 
 export function CroquisGallery() {
   return (
-    <section className="bg-gray-darker py-8 md:py-12 lg:py-16">
+    <section className="py-8 md:py-12 lg:py-16">
       <div className="section-container flex flex-col lg:flex-row gap-8 lg:gap-0 items-center lg:items-stretch">
         {/* Images Column */}
         <div className="w-full lg:w-1/2 px-4 lg:px-0">

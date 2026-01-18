@@ -11,7 +11,7 @@ interface PortfolioGridProps {
 
 export function PortfolioGrid({ projects }: PortfolioGridProps) {
   return (
-    <div className="bg-gray-darker section-container py-8">
+    <div className="section-container py-8">
       <div className="flex flex-wrap justify-start">
         {projects.map((project) => {
           const isCroquis = project.category === 'croquis'

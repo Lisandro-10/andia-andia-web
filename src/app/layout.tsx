@@ -157,7 +157,7 @@ export default function RootLayout({
         />
       </head>
 
-      <body className="font-sans antialiased bg-white text-black">
+      <body className="font-sans antialiased bg-gray-darker text-white">
         <Header />
         <main>{children}</main>
         <Analytics />

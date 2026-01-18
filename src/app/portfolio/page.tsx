@@ -60,7 +60,7 @@ export default async function PortfolioPage() {
           <PortfolioContent allProjects={allProjects} croquisProjects={croquis} />
         </Suspense>
 
-        <section className="py-12 md:py-16 lg:py-20 bg-gray-darker">
+        <section className="py-12 md:py-16 lg:py-20">
           <div className="section-container">
             <div className="max-w-3xl mx-auto text-center space-y-8">
               {/* Main CTA */}
