@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import { Project } from '@/types'
 import { PortfolioGrid } from './PortfolioGrid'
 import { categories } from '@/lib/projects'
+import Link from 'next/link'
 
 interface PortfolioContentProps {
   allProjects: Project[]
@@ -46,6 +47,16 @@ export function PortfolioContent({ allProjects, croquisProjects }: PortfolioCont
 
   return (
     <>
+      <nav className="section-container py-3" aria-label="Breadcrumb">
+        <div className="flex items-center text-sm text-gray-light">
+          <Link href="/" className="hover:text-primary transition-colors">
+            Inicio
+          </Link>
+          <span className="mx-2 text-primary">/</span>
+          <span className="text-white">Portfolio</span>
+        </div>
+      </nav>
+      
       {/* Filter */}
       <div className="bg-gray-darker flex justify-center py-8">
         <div className="flex flex-wrap gap-0">

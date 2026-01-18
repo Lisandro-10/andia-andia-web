@@ -103,7 +103,7 @@ export function Navbar() {
             : 'bg-transparent'
         }`}
       >
-        <div className="section-container">
+        <div className="px-4 sm:px-6 lg:px-32">
           <div className="flex items-center justify-between py-4">
             <Link href="/" className="relative z-50">
               <div>
@@ -130,7 +130,7 @@ export function Navbar() {
                         : isHomePage
                         ? 'border-transparent hover:border-primary-dark'
                         : isSticky
-                        ? 'border-transparent text-white hover:border-black'
+                        ? 'border-transparent text-white hover:border-primary-dark'
                         : 'border-transparent text-white hover:border-primary-dark'
                     }`}
                   >

@@ -14,7 +14,7 @@ export function Hero() {
       <div className="absolute inset-0 z-0">
         <Image
           src={getCDNUrl("backgrounds/home.webp")}
-          alt="" // Imagen decorativa
+          alt="Estudio de arquitectura y construcción en Mendoza - Diseño de viviendas modernas"
           fill
           priority
           className="object-cover"
@@ -31,7 +31,7 @@ export function Hero() {
         <div className="max-w-4xl mx-auto">
           <Image
             src={getLayoutUrl("logo-horizontal.png")}
-            alt="ANDIA ANDIA"
+            alt="Logo de Andia Andia - Estudio de arquitectura en Mendoza"
             width={600}
             height={150}
             priority

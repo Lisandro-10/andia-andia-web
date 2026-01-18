@@ -40,9 +40,9 @@ export function CroquisGallery() {
         <div className="w-full lg:w-1/2 px-4 lg:px-8 flex flex-col justify-center space-y-6">
           <div className="w-1/4 h-4 bg-primary-light" />
 
-          <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-light">
+          <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-light">
             &quot;EL CROQUIS&quot;
-          </h1>
+          </h2>
 
           <h2 className="text-white text-xl md:text-2xl font-light opacity-30">
             Nuestra representación y concepción de nuestros proyectos
