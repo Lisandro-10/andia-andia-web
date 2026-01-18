@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: '%s | Andia Andia',
   },
   description:
-    'Estudio de arquitectura e ingeniería en Mendoza, Argentina. Diseño de viviendas unifamiliares, complejos residenciales y desarrollos inmobiliarios con enfoque en calidad arquitectónica.',
+    'Estudio de arquitectura e ingeniería en Mendoza. Diseño de viviendas, complejos residenciales y desarrollos inmobiliarios de alta calidad.',
   keywords: ['arquitectura', 'Mendoza', 'Argentina', 'diseño', 'viviendas', 'Andia'],
   authors: [{ name: 'Lisandro Andia' }],
   openGraph: {
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     url: 'https://estudioandia.com',
     siteName: 'Andia Andia',
     title: 'Andia Andia | Arquitectura e Ingeniería en Mendoza',
-    description: 'Estudio de arquitectura e ingeniería en Mendoza especializado en viviendas y desarrollos inmobiliarios.',
+    description: 'Estudio de arquitectura e ingeniería en Mendoza. Diseño de viviendas, complejos residenciales y desarrollos inmobiliarios de alta calidad.',
     images: [
       {
         url: '/og-image.jpg',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Andia Andia | Arquitectura e Ingeniería en Mendoza',
-    description: 'Estudio de arquitectura e ingeniería en Mendoza especializado en viviendas y desarrollos inmobiliarios.',
+    description: 'Estudio de arquitectura e ingeniería en Mendoza. Diseño de viviendas, complejos residenciales y desarrollos inmobiliarios de alta calidad.',
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -84,7 +84,7 @@ export default function RootLayout({
               "@id": "https://estudioandia.com/#organization",
               "name": "Andia Andia Arquitectura e Ingeniería",
               "legalName": "Lisandro Andia - Arquitecto",
-              "description": "Estudio de arquitectura e ingeniería en Mendoza, Argentina. Especializado en diseño de viviendas unifamiliares, complejos residenciales y desarrollos inmobiliarios de alta calidad.",
+              "description": "Estudio de arquitectura e ingeniería en Mendoza. Diseño de viviendas, complejos residenciales y desarrollos inmobiliarios de alta calidad.",
               "url": "https://estudioandia.com",
               "logo": {
                 "@type": "ImageObject",

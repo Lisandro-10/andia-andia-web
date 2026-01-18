@@ -12,7 +12,7 @@ export function About() {
         <div className="w-full lg:w-1/2 py-12 md:py-16 lg:py-20 px-4 md:px-8 lg:px-12 flex items-center">
           <div className="space-y-6 w-full">
             {/* Animated Line */}
-            <div className="w-1/4 h-4 bg-primary-dark opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-8" />
+            <div className="w-1/4 h-3 bg-primary-dark opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-8" />
 
             <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-light leading-tight">
               ESTUDIO DE ARQUITECTURA E INGENIERÍA
@@ -24,10 +24,10 @@ export function About() {
 
             <div className="space-y-6 mt-12">
               <p className="text-white text-base md:text-lg lg:text-xl font-light leading-relaxed">
-                Desde 1998 el arquitecto Marcelo Andia, graduado en la
-                Universidad de Mendoza y el ingeniero Guillermo Andia, ingeniero
-                en construcciones especialista en desarrollo sustentable en el
-                hábitat humano, continúan el legado familiar.
+                Desde 1998, el arquitecto Marcelo Andia y el ingeniero Guillermo Andia 
+                llevan adelante su estudio de arquitectura en Mendoza, especializados en 
+                diseño de viviendas unifamiliares, complejos residenciales y desarrollos 
+                inmobiliarios en toda la provincia.
               </p>
 
               <p className="text-white text-base md:text-lg lg:text-xl font-light leading-relaxed">

@@ -50,8 +50,12 @@ export function ContactForm() {
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-normal text-white mb-12">
-            ¡Hablemos de tu proyecto! Contacta con nuestro equipo.
+            Consulta tu Proyecto de Arquitectura en Mendoza
           </h2>
+          <p className="text-gray-light text-lg">
+            ¿Necesitás un arquitecto en Mendoza? Contactanos para diseñar tu vivienda, 
+            complejo residencial o desarrollo inmobiliario.
+          </p>
         </div>
 
         {/* Form */}
