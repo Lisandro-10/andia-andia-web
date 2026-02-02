@@ -7,7 +7,7 @@ import { getBackgroundUrl } from '@/lib/cdn'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Portfolio de Proyectos Arquitectónicos | Andia Andia Mendoza',
+  title: 'Portfolio de Proyectos Arquitectónicos | Estudio Andia Andia Mendoza',
   description:
     'Portfolio de arquitectura en Mendoza: viviendas, complejos residenciales y desarrollos. +25 años diseñando espacios únicos en Argentina.',
   keywords: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     url: 'https://estudioandia.com/portfolio',
-    title: 'Portfolio de Proyectos | Andia Andia Arquitectura',
+    title: 'Portfolio de Proyectos | Estudio Andia Andia',
     description: 'Descubre nuestros proyectos de arquitectura e ingeniería en Mendoza',
     images: ['/og-portfolio.jpg'],
     type: 'website',

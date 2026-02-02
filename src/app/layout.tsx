@@ -16,7 +16,7 @@ const workSans = Work_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL('https://estudioandia.com'),
   title: {
-    default: 'Andia Andia | Arquitectura e Ingeniería en Mendoza',
+    default: 'Estudio Andia Andia | Arquitectura e Ingeniería en Mendoza',
     template: '%s | Andia Andia',
   },
   description:
@@ -27,8 +27,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'es_AR',
     url: 'https://estudioandia.com',
-    siteName: 'Andia Andia',
-    title: 'Andia Andia | Arquitectura e Ingeniería en Mendoza',
+    siteName: 'Estudio Andia Andia',
+    title: 'Estudio Andia Andia | Arquitectura e Ingeniería en Mendoza',
     description: 'Estudio de arquitectura e ingeniería en Mendoza. Diseño de viviendas, complejos residenciales y desarrollos inmobiliarios de alta calidad.',
     images: [
       {
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Andia Andia | Arquitectura e Ingeniería en Mendoza',
+    title: 'Estudio Andia Andia | Arquitectura e Ingeniería en Mendoza',
     description: 'Estudio de arquitectura e ingeniería en Mendoza. Diseño de viviendas, complejos residenciales y desarrollos inmobiliarios de alta calidad.',
     images: ['/og-image.jpg'],
   },
@@ -82,7 +82,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": ["ArchitectsOffice", "LocalBusiness"],
               "@id": "https://estudioandia.com/#organization",
-              "name": "Andia Andia Arquitectura e Ingeniería",
+              "name": "Estudio Andia Andia",
               "legalName": "Lisandro Andia - Arquitecto",
               "description": "Estudio de arquitectura e ingeniería en Mendoza. Diseño de viviendas, complejos residenciales y desarrollos inmobiliarios de alta calidad.",
               "url": "https://estudioandia.com",
