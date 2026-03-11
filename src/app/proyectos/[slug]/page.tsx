@@ -165,7 +165,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <ProjectHero name={project.name} heroImage={project.heroImage} />
 
         {/* Project info — indexable text content */}
-        <section className="py-10 px-4 sm:px-6 lg:px-32">
+        <section className="pt-10 px-4 sm:px-6 lg:px-32">
           <div className="max-w-4xl">
             {/* Visible breadcrumb */}
             <nav aria-label="Breadcrumb" className="text-sm text-gray-dark mb-8">
