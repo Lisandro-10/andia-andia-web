@@ -1,31 +1,31 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Facebook, Instagram, Linkedin, MapPin } from 'lucide-react'
+import { FaFacebook, FaInstagram, FaLinkedin, FaMapPin } from 'react-icons/fa'
 import { getLayoutUrl } from '@/lib/cdn'
 
 export function Footer() {
   const socialLinks = [
     {
       href: 'https://www.linkedin.com/in/andia-andia-171a98251/',
-      Icon: Linkedin,
+      Icon: FaLinkedin,
       label: 'LinkedIn',
       hoverColor: 'hover:text-[#0a66c2]',
     },
     {
       href: 'https://www.instagram.com/andia.andia_arq/',
-      Icon: Instagram,
+      Icon: FaInstagram,
       label: 'Instagram',
       hoverColor: 'hover:text-[#e95950]',
     },
     {
       href: 'https://www.facebook.com/profile.php?id=100063653724645',
-      Icon: Facebook,
+      Icon: FaFacebook,
       label: 'Facebook',
       hoverColor: 'hover:text-[#3b5998]',
     },
     {
       href: 'https://goo.gl/maps/kq2Cc1Ydc1KNaXfy9',
-      Icon: MapPin,
+      Icon: FaMapPin,
       label: 'Ubicación',
       hoverColor: 'hover:text-[#0f9d58]',
     },
@@ -96,10 +96,10 @@ export function Footer() {
                 <p>Mendoza, Argentina</p>
                 <p>
                   <a 
-                    href="tel:+5492612345678" 
+                    href="tel:+5492615371582" 
                     className="hover:text-primary transition-colors duration-200"
                   >
-                    +54 9 261 234 5678
+                    +54 9 261 537 1582
                   </a>
                 </p>
                 <p>

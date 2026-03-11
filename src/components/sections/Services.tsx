@@ -1,23 +1,23 @@
-import { Lightbulb, Home, Hammer, Network } from 'lucide-react'
+import { FaLightbulb, FaHome, FaHammer, FaNetworkWired } from 'react-icons/fa'
 
 const services = [
   {
-    icon: Lightbulb,
+    icon: FaLightbulb,
     title: 'Creación',
     items: ['Relevamiento', 'Concepto', 'Croquis / Idea'],
   },
   {
-    icon: Home,
+    icon: FaHome,
     title: 'Materialización',
     items: ['Diseño', 'Proyecto', 'Ingeniería'],
   },
   {
-    icon: Hammer,
+    icon: FaHammer,
     title: 'Evaluación',
     items: ['Técnica', 'Económica', 'Eficiencia Energética'],
   },
   {
-    icon: Network,
+    icon: FaNetworkWired,
     title: 'Ejecución',
     items: ['Dirección', 'Administración', 'Construcción'],
   },
@@ -43,7 +43,6 @@ export function Services() {
               <div className="mb-6">
                 <service.icon
                   className="w-16 h-16 md:w-20 md:h-20 mx-auto text-primary transition-transform duration-300 group-hover:transform group-hover:-translate-x-4"
-                  strokeWidth={1.5}
                 />
               </div>
 

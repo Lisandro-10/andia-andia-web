@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { MessageCircle } from 'lucide-react'
+import { FaWhatsapp } from 'react-icons/fa'
 
 interface FloatingWhatsAppProps {
   phoneNumber: string
@@ -26,9 +26,8 @@ export function FloatingWhatsApp({
       <div className="relative">       
         {/* Main button */}
         <div className="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-[#25D366] rounded-full shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-2xl">
-          <MessageCircle 
-            className="w-7 h-7 sm:w-8 sm:h-8 text-white" 
-            strokeWidth={2}
+          <FaWhatsapp
+            className="w-7 h-7 sm:w-8 sm:h-8 text-white"
           />
         </div>
       </div>
