@@ -10,31 +10,35 @@ export function Footer() {
       Icon: FaLinkedin,
       label: 'LinkedIn',
       hoverColor: 'hover:text-[#0a66c2]',
+      rel: 'noopener noreferrer me',
     },
     {
       href: 'https://www.instagram.com/andia.andia_arq/',
       Icon: FaInstagram,
       label: 'Instagram',
       hoverColor: 'hover:text-[#e95950]',
+      rel: 'noopener noreferrer me',
     },
     {
       href: 'https://www.facebook.com/profile.php?id=100063653724645',
       Icon: FaFacebook,
       label: 'Facebook',
       hoverColor: 'hover:text-[#3b5998]',
+      rel: 'noopener noreferrer me',
     },
     {
       href: 'https://goo.gl/maps/kq2Cc1Ydc1KNaXfy9',
       Icon: FaMapPin,
       label: 'Ubicación',
       hoverColor: 'hover:text-[#0f9d58]',
+      rel: 'noopener noreferrer',
     },
   ]
 
   const sitemapLinks = [
     { href: '/#services', label: 'Servicios' },
     { href: '/portfolio', label: 'Proyectos' },
-    { href: '/#contact', label: 'Contacto' },
+    { href: '/contacto', label: 'Contacto' },
   ]
 
   return (
@@ -61,7 +65,7 @@ export function Footer() {
                   <Link
                     href={social.href}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel={social.rel}
                     className={`text-gray-dark transition-colors duration-200 ${social.hoverColor}`}
                     aria-label={social.label}
                   >

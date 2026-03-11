@@ -21,7 +21,19 @@ export const metadata: Metadata = {
   },
   description:
     'Estudio de arquitectura e ingeniería en Mendoza. Diseño de viviendas, complejos residenciales y desarrollos inmobiliarios de alta calidad.',
-  keywords: ['arquitectura', 'Mendoza', 'Argentina', 'diseño', 'viviendas', 'Andia'],
+  keywords: [
+    'arquitecto Mendoza',
+    'estudio de arquitectura Mendoza',
+    'diseño viviendas Mendoza',
+    'arquitectura e ingeniería Mendoza',
+    'Andia Andia arquitectura',
+    'complejos residenciales Mendoza',
+    'arquitectura mendoza',
+    'estudio arquitectura',
+    'empresa construcción Mendoza',
+    'diseño inmobiliario Mendoza',
+    'construcción Mendoza',
+  ],
   authors: [{ name: 'Lisandro Andia' }],
   openGraph: {
     type: 'website',
@@ -80,6 +92,23 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": "https://estudioandia.com/#website",
+              "url": "https://estudioandia.com",
+              "name": "Estudio Andia Andia",
+              "description": "Estudio de arquitectura e ingeniería en Mendoza, Argentina.",
+              "publisher": {
+                "@id": "https://estudioandia.com/#organization"
+              },
+              "inLanguage": "es-AR"
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
               "@type": ["ArchitectsOffice", "LocalBusiness"],
               "@id": "https://estudioandia.com/#organization",
               "name": "Estudio Andia Andia",
@@ -127,7 +156,8 @@ export default function RootLayout({
               ],
               "sameAs": [
                 "https://www.instagram.com/andia.andia_arq/",
-                "https://www.facebook.com/profile.php?id=100063653724645"
+                "https://www.facebook.com/profile.php?id=100063653724645",
+                "https://www.linkedin.com/in/andia-andia-171a98251/"
               ],
               "founders": [
                 {

@@ -7,4 +7,7 @@ export interface Project {
   thumbnail: string
   gallery: string[]
   featured?: boolean
+  year?: number
+  location?: string
+  surface?: string
 }

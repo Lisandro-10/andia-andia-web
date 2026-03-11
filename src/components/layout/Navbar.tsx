@@ -58,7 +58,7 @@ export function Navbar() {
   }, [isMobileMenuOpen])
 
   const navLinks = [
-    { href: '/', label: 'Home' },
+    { href: '/', label: 'Inicio' },
     { href: '/portfolio', label: 'Portfolio' },
     { href: '/#about', label: 'Nosotros' },
     { href: '/#contact', label: 'Contacto' },
@@ -110,8 +110,8 @@ export function Navbar() {
                 <Image
                   src={getLayoutUrl('logo-navbar.png')}
                   alt="ANDIA ANDIA"
-                  width={100}
-                  height={100}
+                  width={60}
+                  height={60}
                   priority
                   placeholder="blur"
                   blurDataURL={getBlurDataURL('layout/logo-navbar.png') || FALLBACK_BLUR}
