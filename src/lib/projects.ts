@@ -10,9 +10,6 @@ export const projects: Project[] = [
     description: 'Vivienda unifamiliar en Mendoza',
     heroImage: getCDNUrl('projects/casa-ga/hero.webp'),
     thumbnail: getProjectThumbnailUrl('casa-ga'),
-    year: 2016,
-    location: 'Barrio La Bajada, Villa Nueva, Guaymallén',
-    surface: '400 m²',
     gallery: [
       // Primera columna - 15 imágenes
       getProjectImageUrl('casa-ga', 'GA-1.webp'),
