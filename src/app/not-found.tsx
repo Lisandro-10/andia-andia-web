@@ -1,10 +1,15 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { getLayoutUrl } from '@/lib/cdn'
 
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+}
+
 export default function NotFound() {
   return (
-    <main className="min-h-screen flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center">
       <div className="section-container text-center py-16">
         <div className="max-w-2xl mx-auto space-y-8">
           {/* Logo */}
@@ -46,6 +51,6 @@ export default function NotFound() {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   )
 }

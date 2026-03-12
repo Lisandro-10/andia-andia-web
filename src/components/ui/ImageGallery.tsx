@@ -2,11 +2,14 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import Lightbox from 'yet-another-react-lightbox'
+import dynamic from 'next/dynamic'
 import Counter from 'yet-another-react-lightbox/plugins/counter'
 import 'yet-another-react-lightbox/styles.css'
 import 'yet-another-react-lightbox/plugins/counter.css'
 import { getBlurDataURL } from '@/lib/generated/blur-placeholders'
+
+// Deferred — only downloaded when the user first clicks an image (~40 KB saved on initial load)
+const Lightbox = dynamic(() => import('yet-another-react-lightbox'), { ssr: false })
 
 // Placeholder genérico para imágenes sin blur data
 const FALLBACK_BLUR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAnSURBVHgB7coxAQAACMOwgaL5d4Ir4EBSELshzpV0UNNBTQc1HdR0AKt6AwnwkFE3AAAAAElFTkSuQmCC'
@@ -16,28 +19,37 @@ interface ImageGalleryProps {
   projectName: string
 }
 
+const INITIAL_COUNT = 15 // 5 rows × 3 columns
+const LOAD_MORE_COUNT = 12
+
 export function ImageGallery({ images, projectName }: ImageGalleryProps) {
   const [open, setOpen] = useState(false)
   const [photoIndex, setPhotoIndex] = useState(0)
+  const [lightboxMounted, setLightboxMounted] = useState(false)
+  const [visibleCount, setVisibleCount] = useState(
+    images.length > INITIAL_COUNT ? INITIAL_COUNT : images.length
+  )
 
-  // Distribuir imágenes en 3 columnas para mantener el layout original
-  const distributeImages = () => {
+  const visibleImages = images.slice(0, visibleCount)
+  const hasMore = visibleCount < images.length
+
+  const distributeImages = (imgs: string[]) => {
     const columns: string[][] = [[], [], []]
-    images.forEach((img, index) => {
+    imgs.forEach((img, index) => {
       columns[index % 3].push(img)
     })
     return columns
   }
 
-  const columns = distributeImages()
+  const columns = distributeImages(visibleImages)
 
-  // Preparar slides para el lightbox
+  // Lightbox always uses the full images array so navigation works correctly after loading more
   const slides = images.map((src) => ({ src }))
 
-  // Handler para abrir lightbox con la imagen clickeada
   const handleImageClick = (imageUrl: string) => {
     const index = images.indexOf(imageUrl)
     setPhotoIndex(index)
+    setLightboxMounted(true) // triggers the dynamic import on first click
     setOpen(true)
   }
 
@@ -88,10 +100,24 @@ export function ImageGallery({ images, projectName }: ImageGalleryProps) {
             </div>
           ))}
         </div>
+
+        {/* Load more */}
+        {hasMore && (
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={() =>
+                setVisibleCount((c) => Math.min(c + LOAD_MORE_COUNT, images.length))
+              }
+              className="text-white border border-gray-dark hover:border-primary hover:text-primary transition-colors duration-200 px-8 py-3 text-sm uppercase tracking-widest"
+            >
+              Ver más ({images.length - visibleCount} restantes)
+            </button>
+          </div>
+        )}
       </div>
 
-      {/* Lightbox */}
-      <Lightbox
+      {/* Lightbox — chunk only downloaded after first image click */}
+      {lightboxMounted && <Lightbox
         open={open}
         close={() => setOpen(false)}
         index={photoIndex}
@@ -120,7 +146,7 @@ export function ImageGallery({ images, projectName }: ImageGalleryProps) {
           buttonPrev: images.length > 1 ? undefined : () => null,
           buttonNext: images.length > 1 ? undefined : () => null,
         }}
-      />
+      />}
     </section>
   )
 }
