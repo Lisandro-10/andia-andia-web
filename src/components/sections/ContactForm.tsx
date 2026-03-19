@@ -14,12 +14,30 @@ export function ContactForm({ variant = 'section' }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
+  function sanitizeText(value: string, maxLength: number): string {
+    return value.trim().replace(/<[^>]*>/g, '').slice(0, maxLength)
+  }
+
+  function isValidEmail(value: string): boolean {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+  }
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
     const form = e.currentTarget;
+
+    const name = sanitizeText((form.elements.namedItem("nombre") as HTMLInputElement).value, 100)
+    const email = sanitizeText((form.elements.namedItem("email") as HTMLInputElement).value, 254)
+    const message = sanitizeText((form.elements.namedItem("message") as HTMLTextAreaElement).value, 2000)
+
+    if (!name || !isValidEmail(email) || !message) {
+      setSubmitStatus('error')
+      setIsSubmitting(false)
+      return
+    }
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -30,10 +48,10 @@ export function ContactForm({ variant = 'section' }: ContactFormProps) {
         },
         body: JSON.stringify({
           access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
-          name: (form.elements.namedItem("nombre") as HTMLInputElement).value,
-          email: (form.elements.namedItem("email") as HTMLInputElement).value,
+          name,
+          email,
           subject: "Consulta de proyecto",
-          message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+          message,
         }),
       });
 

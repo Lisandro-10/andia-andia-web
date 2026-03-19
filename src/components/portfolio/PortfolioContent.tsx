@@ -12,9 +12,12 @@ interface PortfolioContentProps {
   croquisProjects: Project[]
 }
 
+const validCategoryValues = new Set(categories.map(c => c.value))
+
 export function PortfolioContent({ allProjects, croquisProjects }: PortfolioContentProps) {
   const searchParams = useSearchParams()
-  const categoryParam = searchParams.get('category') || 'all'
+  const raw = searchParams.get('category') || 'all'
+  const categoryParam = validCategoryValues.has(raw) ? raw : 'all'
   const [activeCategory, setActiveCategory] = useState(categoryParam)
 
   useEffect(() => {

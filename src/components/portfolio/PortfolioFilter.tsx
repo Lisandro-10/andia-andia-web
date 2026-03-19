@@ -3,10 +3,13 @@
 import { useRouter, useSearchParams } from 'next/navigation'
 import { categories } from '@/lib/projects'
 
+const validCategoryValues = new Set(categories.map(c => c.value))
+
 export function PortfolioFilter() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const activeCategory = searchParams.get('category') || 'all'
+  const raw = searchParams.get('category') || 'all'
+  const activeCategory = validCategoryValues.has(raw) ? raw : 'all'
 
   function handleFilter(category: string) {
     const params = new URLSearchParams(searchParams.toString())
