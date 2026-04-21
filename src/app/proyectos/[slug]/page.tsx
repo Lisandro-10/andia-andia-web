@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { projects, getProjectBySlug } from '@/lib/projects'
+import { listProjectsFromManifest, getProjectFromManifest } from '@/lib/manifest'
 import { ProjectHero } from '@/components/ui/ProjectHero'
 import { ImageGallery } from '@/components/ui/ImageGallery'
 import { RelatedProjects } from '@/components/ui/RelatedProjects'
+
+export const revalidate = 300
 
 interface ProjectPageProps {
   params: {
@@ -12,19 +14,17 @@ interface ProjectPageProps {
   }
 }
 
-// Only pre-render real projects — croquis are portfolio-only images, not pages
-export const dynamicParams = false
+export const dynamicParams = true
 
 export async function generateStaticParams() {
-  return projects.map((project) => ({
-    slug: project.slug,
-  }))
+  const projects = await listProjectsFromManifest()
+  return projects.map((project) => ({ slug: project.slug }))
 }
 
 export async function generateMetadata({
   params,
 }: ProjectPageProps): Promise<Metadata> {
-  const project = await getProjectBySlug(params.slug)
+  const project = await getProjectFromManifest(params.slug)
 
   if (!project) {
     return { title: 'Proyecto no encontrado' }
@@ -85,7 +85,7 @@ export async function generateMetadata({
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  const project = await getProjectBySlug(params.slug)
+  const project = await getProjectFromManifest(params.slug)
 
   if (!project) {
     notFound()

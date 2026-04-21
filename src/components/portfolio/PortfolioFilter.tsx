@@ -1,7 +1,14 @@
 'use client'
 
 import { useRouter, useSearchParams } from 'next/navigation'
-import { categories } from '@/lib/projects'
+
+const categories = [
+  { value: 'all', label: 'Todas' },
+  { value: 'vivienda', label: 'Viviendas Unifamiliares' },
+  { value: 'inmobiliario', label: 'Desarrollos Inmobiliarios' },
+  { value: 'complejos', label: 'Complejos Residenciales' },
+  { value: 'croquis', label: 'Croquis' },
+]
 
 const validCategoryValues = new Set(categories.map(c => c.value))
 

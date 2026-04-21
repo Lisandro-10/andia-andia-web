@@ -1,11 +1,12 @@
 import { MetadataRoute } from 'next'
-import { projects } from '@/lib/projects'
+import { listProjectsFromManifest } from '@/lib/manifest'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const revalidate = 300
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://estudioandia.com'
   const currentDate = new Date()
 
-  // Páginas estáticas
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
@@ -27,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // Páginas dinámicas de proyectos
+  const projects = await listProjectsFromManifest()
   const projectPages: MetadataRoute.Sitemap = projects.map((project) => ({
     url: `${baseUrl}/proyectos/${project.slug}`,
     lastModified: currentDate,

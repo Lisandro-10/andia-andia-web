@@ -1,39 +1,16 @@
-import { getProjectThumbnailUrl } from '@/lib/cdn'
+import { listProjectsFromManifest } from '@/lib/manifest'
 import Image from 'next/image'
 import Link from 'next/link'
 import { getBlurDataURL } from '@/lib/generated/blur-placeholders'
 
 const FALLBACK_BLUR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAnSURBVHgB7coxAQAACMOwgaL5d4Ir4EBSELshzpV0UNNBTQc1HdR0AKt6AwnwkFE3AAAAAElFTkSuQmCC'
 
-const featuredProjects = [
-  {
-    slug: 'casa-vl',
-    name: 'Casa VL',
-    image: getProjectThumbnailUrl('casa-vl'),
-  },
-  {
-    slug: 'casa-fdm',
-    name: 'Casa FDM',
-    image: getProjectThumbnailUrl('casa-fdm'),
-  },
-  {
-    slug: 'casa-aa',
-    name: 'Casa AA',
-    image: getProjectThumbnailUrl('casa-aa'),
-  },
-  {
-    slug: 'casa-ga',
-    name: 'Casa GA',
-    image: getProjectThumbnailUrl('casa-ga'),
-  },
-  {
-    slug: 'bendita-piedra',
-    name: 'Bendita Piedra',
-    image: getProjectThumbnailUrl('bendita-piedra'),
-  },
-]
+export async function FeaturedProjects() {
+  const allProjects = await listProjectsFromManifest()
+  const featuredProjects = allProjects.filter((p) => p.featured).slice(0, 5)
 
-export function FeaturedProjects() {
+  if (!featuredProjects.length) return null
+
   return (
     <section className="py-10 md:py-20 lg:py-24">
       <div className="section-container">
@@ -56,13 +33,13 @@ export function FeaturedProjects() {
               >
                 <div className="relative aspect-[4/3]">
                   <Image
-                    src={project.image}
+                    src={project.thumbnail}
                     alt={project.name}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover will-change-transform transition-transform duration-500 ease-out scale-100 group-hover:scale-[1.03]"
                     placeholder="blur"
-                    blurDataURL={getBlurDataURL(project.image) || FALLBACK_BLUR}
+                    blurDataURL={getBlurDataURL(project.thumbnail) || FALLBACK_BLUR}
                   />
                   <div className="absolute inset-0 bg-black/0 transition-colors duration-500 ease-out group-hover:bg-black/10" />
                 </div>
@@ -85,13 +62,13 @@ export function FeaturedProjects() {
               >
                 <div className="relative aspect-[4/3]">
                   <Image
-                    src={project.image}
+                    src={project.thumbnail}
                     alt={project.name}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover will-change-transform transition-transform duration-500 ease-out scale-100 group-hover:scale-[1.03]"
                     placeholder="blur"
-                    blurDataURL={getBlurDataURL(project.image) || FALLBACK_BLUR}
+                    blurDataURL={getBlurDataURL(project.thumbnail) || FALLBACK_BLUR}
                   />
                   <div className="absolute inset-0 bg-black/0 transition-colors duration-500 ease-out group-hover:bg-black/10" />
                 </div>

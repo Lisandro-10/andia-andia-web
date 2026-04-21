@@ -38,3 +38,10 @@ next-env.d.ts
 # docs
 /docs
 /scripts
+
+# generated — regenerar con: npx tsx scripts/generate-blur-placeholders.ts
+/src/lib/generated/blur-placeholders.ts
+/src/lib/generated/blur-placeholders.json
+
+# lambda build artifacts
+/lambda/*/function.zip

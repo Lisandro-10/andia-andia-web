@@ -10,17 +10,19 @@
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
-    "react-icons": "^5.5.0",
     "next": "14.2.35",
     "plaiceholder": "^3.0.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-icons": "^5.5.0",
     "sharp": "^0.34.5",
     "viewerjs": "^1.11.6",
     "yet-another-react-lightbox": "^3.28.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@aws-sdk/client-cloudfront": "^3.1033.0",
+    "@aws-sdk/client-s3": "^3.1033.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

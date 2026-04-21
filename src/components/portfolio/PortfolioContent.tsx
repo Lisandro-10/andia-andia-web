@@ -4,8 +4,15 @@ import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Project } from '@/types'
 import { PortfolioGrid } from './PortfolioGrid'
-import { categories } from '@/lib/projects'
 import Link from 'next/link'
+
+const categories = [
+  { value: 'all', label: 'Todas' },
+  { value: 'vivienda', label: 'Viviendas Unifamiliares' },
+  { value: 'inmobiliario', label: 'Desarrollos Inmobiliarios' },
+  { value: 'complejos', label: 'Complejos Residenciales' },
+  { value: 'croquis', label: 'Croquis' },
+]
 
 interface PortfolioContentProps {
   allProjects: Project[]
