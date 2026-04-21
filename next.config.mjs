@@ -1,3 +1,11 @@
+const cdnUrl = process.env.NEXT_PUBLIC_CDN_URL
+
+if (process.env.NODE_ENV === 'production' && !cdnUrl) {
+  throw new Error('NEXT_PUBLIC_CDN_URL is required in production builds')
+}
+
+const cdnHostname = cdnUrl ? new URL(cdnUrl).hostname : ''
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async headers(){
@@ -32,13 +40,9 @@ const nextConfig = {
     ]
   },
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'd1yl86jsjqb7lc.cloudfront.net',
-        pathname: '/**',
-      },
-    ],
+    remotePatterns: cdnHostname
+      ? [{ protocol: 'https', hostname: cdnHostname, pathname: '/**' }]
+      : [],
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],

@@ -1,16 +1,10 @@
-import { getCroquisUrl } from '@/lib/cdn'
+import { getFeaturedCroquisFromManifest } from '@/lib/manifest'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getBlurDataURL } from '@/lib/generated/blur-placeholders'
 
-const FALLBACK_BLUR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAnSURBVHgB7coxAQAACMOwgaL5d4Ir4EBSELshzpV0UNNBTQc1HdR0AKt6AwnwkFE3AAAAAElFTkSuQmCC'
+export async function CroquisGallery() {
+  const croquis = await getFeaturedCroquisFromManifest()
 
-const croquis = [
-  getCroquisUrl('croquis-19.png'),
-  getCroquisUrl('croquis-20.png'),
-]
-
-export function CroquisGallery() {
   return (
     <section className="py-8 md:py-12 lg:py-16">
       <div className="section-container flex flex-col lg:flex-row gap-8 lg:gap-0 items-center lg:items-stretch">
@@ -28,8 +22,7 @@ export function CroquisGallery() {
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
-                  placeholder="blur"
-                  blurDataURL={getBlurDataURL(image) || FALLBACK_BLUR}
+                  loading="lazy"
                 />
               </div>
             ))}

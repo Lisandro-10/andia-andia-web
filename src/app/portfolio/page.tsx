@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { Suspense } from 'react'
-import { getAllProjects, croquis } from '@/lib/projects'
+import { listProjectsFromManifest, listCroquisAsProjects } from '@/lib/manifest'
 import { PortfolioContent } from '@/components/portfolio/PortfolioContent'
 import { getBackgroundUrl } from '@/lib/cdn'
 import Link from 'next/link'
+
+export const revalidate = 300
 
 export async function generateMetadata({
   searchParams,
@@ -49,7 +51,10 @@ export async function generateMetadata({
 }
 
 export default async function PortfolioPage() {
-  const allProjects = await getAllProjects()
+  const [allProjects, croquisProjects] = await Promise.all([
+    listProjectsFromManifest(),
+    listCroquisAsProjects(),
+  ])
 
   return (
     <div className="min-h-screen">
@@ -72,7 +77,7 @@ export default async function PortfolioPage() {
 
       {/* Content with client-side filtering */}
       <Suspense fallback={<PortfolioSkeleton />}>
-        <PortfolioContent allProjects={allProjects} croquisProjects={croquis} />
+        <PortfolioContent allProjects={allProjects} croquisProjects={croquisProjects} />
       </Suspense>
 
       <section className="py-12 md:py-16 lg:py-20">

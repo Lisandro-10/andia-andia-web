@@ -1,9 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Project } from '@/types'
-import { getBlurDataURL } from '@/lib/generated/blur-placeholders'
-
-const FALLBACK_BLUR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAnSURBVHgB7coxAQAACMOwgaL5d4Ir4EBSELshzpV0UNNBTQc1HdR0AKt6AwnwkFE3AAAAAElFTkSuQmCC'
 
 interface PortfolioGridProps {
   projects: Project[]
@@ -32,8 +29,7 @@ export function PortfolioGrid({ projects }: PortfolioGridProps) {
                 className={`object-cover ${
                   !isCroquis && 'transition-opacity duration-300 group-hover:opacity-60'
                 }`}
-                placeholder="blur"
-                blurDataURL={getBlurDataURL(project.thumbnail) || FALLBACK_BLUR}
+                loading="lazy"
               />
               
               {/* Title - solo para NO croquis */}

@@ -70,6 +70,8 @@ export const metadata: Metadata = {
   },
 }
 
+const cdnUrl = process.env.NEXT_PUBLIC_CDN_URL
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -78,15 +80,12 @@ export default function RootLayout({
   return (
     <html lang="es" className={workSans.variable}>
       <head>
-        <link
-          rel="preconnect"
-          href="https://d1yl86jsjqb7lc.cloudfront.net"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="dns-prefetch"
-          href="https://d1yl86jsjqb7lc.cloudfront.net"
-        />
+        {cdnUrl && (
+          <>
+            <link rel="preconnect" href={cdnUrl} crossOrigin="anonymous" />
+            <link rel="dns-prefetch" href={cdnUrl} />
+          </>
+        )}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -123,7 +122,7 @@ export default function RootLayout({
               },
               "image": [
                 "https://estudioandia.com/og-image.jpg",
-                "https://d1yl86jsjqb7lc.cloudfront.net/hero-home.jpg"
+                ...(cdnUrl ? [`${cdnUrl}/hero-home.jpg`] : [])
               ],
               "telephone": "+54 9 261-537-1582",
               "email": "andiaarquing@gmail.com",

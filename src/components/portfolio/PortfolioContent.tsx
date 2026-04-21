@@ -4,17 +4,27 @@ import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Project } from '@/types'
 import { PortfolioGrid } from './PortfolioGrid'
-import { categories } from '@/lib/projects'
 import Link from 'next/link'
+
+const categories = [
+  { value: 'all', label: 'Todas' },
+  { value: 'vivienda', label: 'Viviendas Unifamiliares' },
+  { value: 'inmobiliario', label: 'Desarrollos Inmobiliarios' },
+  { value: 'complejos', label: 'Complejos Residenciales' },
+  { value: 'croquis', label: 'Croquis' },
+]
 
 interface PortfolioContentProps {
   allProjects: Project[]
   croquisProjects: Project[]
 }
 
+const validCategoryValues = new Set(categories.map(c => c.value))
+
 export function PortfolioContent({ allProjects, croquisProjects }: PortfolioContentProps) {
   const searchParams = useSearchParams()
-  const categoryParam = searchParams.get('category') || 'all'
+  const raw = searchParams.get('category') || 'all'
+  const categoryParam = validCategoryValues.has(raw) ? raw : 'all'
   const [activeCategory, setActiveCategory] = useState(categoryParam)
 
   useEffect(() => {

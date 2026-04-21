@@ -69,10 +69,9 @@ export function ImageGallery({ images, projectName }: ImageGalleryProps) {
               className="w-full md:flex-[0_0_45%] lg:flex-[0_0_32%] flex flex-col gap-2"
             >
               {column.map((image, imageIndex) => {
-                const blurDataURL = getBlurDataURL(image) || FALLBACK_BLUR
                 const globalIndex = columnIndex * Math.ceil(images.length / 3) + imageIndex + 1
-                // Las primeras 6 imágenes visibles (2 por columna) se cargan eager
                 const isAboveFold = columnIndex < 3 && imageIndex < 2
+                const blurDataURL = isAboveFold ? (getBlurDataURL(image) || FALLBACK_BLUR) : undefined
 
                 return (
                   <div
@@ -88,8 +87,7 @@ export function ImageGallery({ images, projectName }: ImageGalleryProps) {
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover transition-opacity duration-300 group-hover:opacity-90"
                         loading={isAboveFold ? 'eager' : 'lazy'}
-                        placeholder="blur"
-                        blurDataURL={blurDataURL}
+                        {...(blurDataURL && { placeholder: 'blur', blurDataURL })}
                       />
                       {/* Overlay hover */}
                       <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300" />

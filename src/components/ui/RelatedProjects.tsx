@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getProjectsByCategory } from '@/lib/projects'
+import { getProjectsByCategoryFromManifest } from '@/lib/manifest'
 import type { Project } from '@/types'
 
 interface RelatedProjectsProps {
@@ -12,7 +12,7 @@ export async function RelatedProjects({ currentSlug, category }: RelatedProjects
   // Croquis are portfolio-only images — no project pages to link to
   if (category === 'croquis') return null
 
-  const categoryProjects = await getProjectsByCategory(category)
+  const categoryProjects = await getProjectsByCategoryFromManifest(category)
   const related = categoryProjects.filter((p) => p.slug !== currentSlug).slice(0, 3)
 
   if (!related.length) return null
