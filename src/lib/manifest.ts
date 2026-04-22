@@ -82,7 +82,6 @@ export async function getCroquisFromManifest(): Promise<string[]> {
 
 export async function getFeaturedCroquisFromManifest(): Promise<string[]> {
   const manifest = await getManifest()
-  console.log(manifest.featured_croquis)
   const source = manifest.featured_croquis.length
     ? manifest.featured_croquis
     : manifest.croquis.slice(0, 2)

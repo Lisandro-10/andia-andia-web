@@ -5,6 +5,7 @@ import { Footer } from '@/components/layout/Footer'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/next'
 import { FloatingWhatsApp } from '@/components/ui/FloatingWhatsApp'
+import { MotionProvider } from '@/components/providers/MotionProvider'
 
 const workSans = Work_Sans({
   subsets: ['latin'],
@@ -187,13 +188,15 @@ export default function RootLayout({
       </head>
 
       <body className="font-sans antialiased bg-gray-darker text-white">
-        <Header />
-        <main>{children}</main>
-        <Analytics />
-        <Footer />
-        <FloatingWhatsApp 
-          phoneNumber="5492615371582"
-        />
+        <MotionProvider>
+          <Header />
+          <main>{children}</main>
+          <Analytics />
+          <Footer />
+          <FloatingWhatsApp
+            phoneNumber="5492615371582"
+          />
+        </MotionProvider>
       </body>
     </html>
   )

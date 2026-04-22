@@ -1,6 +1,7 @@
 import { getCDNUrl } from '@/lib/cdn'
 import Image from 'next/image'
 import { getBlurDataURL } from '@/lib/generated/blur-placeholders'
+import { RevealSection } from '@/components/ui/RevealSection'
 
 const FALLBACK_BLUR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAnSURBVHgB7coxAQAACMOwgaL5d4Ir4EBSELshzpV0UNNBTQc1HdR0AKt6AwnwkFE3AAAAAElFTkSuQmCC'
 
@@ -14,29 +15,35 @@ export function About() {
             {/* Animated Line */}
             <div className="w-1/4 h-3 bg-primary-dark opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-8" />
 
-            <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-light leading-tight">
-              ESTUDIO DE ARQUITECTURA E INGENIERÍA
-            </h1>
+            <RevealSection>
+              <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-light leading-tight">
+                ESTUDIO DE ARQUITECTURA E INGENIERÍA
+              </h1>
+            </RevealSection>
 
-            <h2 className="text-white text-xl md:text-2xl lg:text-3xl font-light opacity-30 mt-12">
-              MENDOZA - ARGENTINA
-            </h2>
+            <RevealSection delay={0.1}>
+              <h2 className="text-white text-xl md:text-2xl lg:text-3xl font-light opacity-30 mt-12">
+                MENDOZA - ARGENTINA
+              </h2>
+            </RevealSection>
 
-            <div className="space-y-6 mt-12">
-              <p className="text-white text-base md:text-lg lg:text-xl font-light leading-relaxed">
-                Desde 1998, el arquitecto Marcelo Andia y el ingeniero Guillermo Andia 
-                llevan adelante su estudio de arquitectura en Mendoza, especializados en 
-                diseño de viviendas unifamiliares, complejos residenciales y desarrollos 
-                inmobiliarios en toda la provincia.
-              </p>
+            <RevealSection delay={0.2}>
+              <div className="space-y-6 mt-12">
+                <p className="text-white text-base md:text-lg lg:text-xl font-light leading-relaxed">
+                  Desde 1998, el arquitecto Marcelo Andia y el ingeniero Guillermo Andia
+                  llevan adelante su estudio de arquitectura en Mendoza, especializados en
+                  diseño de viviendas unifamiliares, complejos residenciales y desarrollos
+                  inmobiliarios en toda la provincia.
+                </p>
 
-              <p className="text-white text-base md:text-lg lg:text-xl font-light leading-relaxed">
-                Poniendo en valor la simpleza de las formas, el juego de
-                volumetrías abstractas, el expresivo uso de materiales al natural
-                y el carácter funcional - racional de sus espacios, definen el
-                lenguaje arquitectónico atemporal de sus obras.
-              </p>
-            </div>
+                <p className="text-white text-base md:text-lg lg:text-xl font-light leading-relaxed">
+                  Poniendo en valor la simpleza de las formas, el juego de
+                  volumetrías abstractas, el expresivo uso de materiales al natural
+                  y el carácter funcional - racional de sus espacios, definen el
+                  lenguaje arquitectónico atemporal de sus obras.
+                </p>
+              </div>
+            </RevealSection>
           </div>
         </div>
 

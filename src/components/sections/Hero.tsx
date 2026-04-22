@@ -1,6 +1,7 @@
 import { getCDNUrl, getLayoutUrl } from '@/lib/cdn'
 import Image from 'next/image'
 import { getBlurDataURL } from '@/lib/generated/blur-placeholders'
+import { HeroContent } from './HeroContent'
 
 const FALLBACK_BLUR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAnSURBVHgB7coxAQAACMOwgaL5d4Ir4EBSELshzpV0UNNBTQc1HdR0AKt6AwnwkFE3AAAAAElFTkSuQmCC'
 
@@ -27,7 +28,7 @@ export function Hero() {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 text-center px-4 animate-fade-in">
+      <HeroContent>
         <div className="max-w-4xl mx-auto">
           <Image
             src={getLayoutUrl("logo-horizontal.png")}
@@ -40,7 +41,7 @@ export function Hero() {
             blurDataURL={getBlurDataURL("layout/logo-horizontal.png") || FALLBACK_BLUR}
           />
         </div>
-      </div>
+      </HeroContent>
     </section>
   )
 }
