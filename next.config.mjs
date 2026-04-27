@@ -8,6 +8,17 @@ const cdnHostname = cdnUrl ? new URL(cdnUrl).hostname : ''
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async redirects() {
+    return [
+      { source: '/index.html', destination: '/', permanent: true },
+      { source: '/pages/index.html', destination: '/', permanent: true },
+      { source: '/pages/casafdm', destination: '/proyectos/casa-fdm', permanent: true },
+      { source: '/pages/benditapiedra', destination: '/proyectos/bendita-piedra', permanent: true },
+      { source: '/pages/casapm', destination: '/proyectos/casa-pm', permanent: true },
+      { source: '/pages/casavl', destination: '/proyectos/casa-vl', permanent: true },
+      { source: '/pages/casaga', destination: '/proyectos/casa-ga', permanent: true },
+    ]
+  },
   async headers(){
     return [
       {
