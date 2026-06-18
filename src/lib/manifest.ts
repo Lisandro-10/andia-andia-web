@@ -21,7 +21,7 @@ const ManifestSchema = z.object({
   projects: z.array(ManifestProjectSchema),
   croquis: z.array(z.string()).optional().default([]),
   featured_croquis: z.array(z.string()).optional().default([]),
-  backgrounds: z.record(z.string()).optional().default({}),
+  backgrounds: z.record(z.string(), z.string()).optional().default({}),
 })
 
 type Manifest = z.infer<typeof ManifestSchema>
