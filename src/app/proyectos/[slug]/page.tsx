@@ -9,9 +9,9 @@ import { RelatedProjects } from '@/components/ui/RelatedProjects'
 export const revalidate = 300
 
 interface ProjectPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export const dynamicParams = true
@@ -24,7 +24,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: ProjectPageProps): Promise<Metadata> {
-  const project = await getProjectFromManifest(params.slug)
+  const { slug } = await params
+  const project = await getProjectFromManifest(slug)
 
   if (!project) {
     return { title: 'Proyecto no encontrado' }
@@ -85,7 +86,8 @@ export async function generateMetadata({
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  const project = await getProjectFromManifest(params.slug)
+  const { slug } = await params
+  const project = await getProjectFromManifest(slug)
 
   if (!project) {
     notFound()

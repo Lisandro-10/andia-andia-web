@@ -11,9 +11,10 @@ export const revalidate = 300
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams: { category?: string }
+  searchParams: Promise<{ category?: string }>
 }): Promise<Metadata> {
-  const isFiltered = Boolean(searchParams.category)
+  const { category } = await searchParams
+  const isFiltered = Boolean(category)
 
   return {
     title: 'Portfolio de Proyectos Arquitectónicos | Estudio Andia Andia Mendoza',

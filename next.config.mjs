@@ -30,24 +30,9 @@ const nextConfig = {
           },
         ],
       },
-      {
-        source: '/_next/image(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/_next/static/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      }
+      // Nota: Next 16 ya aplica `immutable` a /_next/static (chunks con hash) y
+      // gestiona el cache de /_next/image vía images.minimumCacheTTL. Setear
+      // Cache-Control custom en esas rutas internas rompe el dev → se quitaron.
     ]
   },
   images: {
