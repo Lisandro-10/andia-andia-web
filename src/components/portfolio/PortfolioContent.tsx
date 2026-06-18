@@ -1,11 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Project } from '@/types'
 import { PortfolioGrid } from './PortfolioGrid'
 import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 import { staggerContainerSlow, staggerItem } from '@/lib/motion'
 
 const categories = [
@@ -29,9 +29,13 @@ export function PortfolioContent({ allProjects, croquisProjects }: PortfolioCont
   const categoryParam = validCategoryValues.has(raw) ? raw : 'all'
   const [activeCategory, setActiveCategory] = useState(categoryParam)
 
-  useEffect(() => {
+  // Sincroniza el filtro activo cuando cambia el param de la URL (back/forward
+  // del navegador) sin usar un effect: patrón render-phase recomendado por React.
+  const [prevParam, setPrevParam] = useState(categoryParam)
+  if (categoryParam !== prevParam) {
+    setPrevParam(categoryParam)
     setActiveCategory(categoryParam)
-  }, [categoryParam])
+  }
 
   const filteredProjects = (() => {
     if (activeCategory === 'croquis') return croquisProjects

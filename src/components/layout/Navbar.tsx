@@ -18,6 +18,9 @@ export function Navbar() {
   const observerTarget = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    // Flag de montaje para createPortal SSR-safe: el setState-in-effect es el
+    // patrón intencional acá (debe activarse recién tras montar en cliente).
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true)
 
     const observer = new IntersectionObserver(
@@ -42,9 +45,12 @@ export function Navbar() {
     }
   }, [])
 
-  useEffect(() => {
+  // Cierra el menú mobile al navegar, sin effect: patrón render-phase de React.
+  const [prevPathname, setPrevPathname] = useState(pathname)
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname)
     setIsMobileMenuOpen(false)
-  }, [pathname])
+  }
 
   useEffect(() => {
     if (!isMobileMenuOpen) return

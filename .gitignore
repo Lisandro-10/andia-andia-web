@@ -20,6 +20,9 @@
 .DS_Store
 *.pem
 
+# claude code local config
+/.claude
+
 # debug
 npm-debug.log*
 yarn-debug.log*
@@ -39,9 +42,8 @@ next-env.d.ts
 /docs
 /scripts
 
-# generated — regenerar con: npx tsx scripts/generate-blur-placeholders.ts
-/src/lib/generated/blur-placeholders.ts
-/src/lib/generated/blur-placeholders.json
-
 # lambda build artifacts
 /lambda/*/function.zip
+
+# manifest local — el real vive en el CDN
+/public/data/
