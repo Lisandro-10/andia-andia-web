@@ -17,7 +17,7 @@ const workSans = Work_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL('https://estudioandia.com'),
   title: {
-    default: 'Estudio Andia Andia | Arquitectura e Ingeniería en Mendoza',
+    default: 'Estudio de Arquitectura e Ingeniería en Mendoza | Andia Andia',
     template: '%s | Andia Andia',
   },
   description:
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     locale: 'es_AR',
     url: 'https://estudioandia.com',
     siteName: 'Estudio Andia Andia',
-    title: 'Estudio Andia Andia | Arquitectura e Ingeniería en Mendoza',
+    title: 'Estudio de Arquitectura e Ingeniería en Mendoza | Andia Andia',
     description: 'Estudio de arquitectura e ingeniería en Mendoza. Diseño de viviendas, complejos residenciales y desarrollos inmobiliarios de alta calidad.',
     images: [
       {
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Estudio Andia Andia | Arquitectura e Ingeniería en Mendoza',
+    title: 'Estudio de Arquitectura e Ingeniería en Mendoza | Andia Andia',
     description: 'Estudio de arquitectura e ingeniería en Mendoza. Diseño de viviendas, complejos residenciales y desarrollos inmobiliarios de alta calidad.',
     images: ['/og-image.jpg'],
   },
@@ -111,7 +111,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": ["ArchitectsOffice", "LocalBusiness"],
               "@id": "https://estudioandia.com/#organization",
-              "name": "Estudio Andia Andia",
+              "name": "Estudio de Arquitectura e Ingeniería en Mendoza | Andia Andia",
               "legalName": "Lisandro Andia - Arquitecto",
               "description": "Estudio de arquitectura e ingeniería en Mendoza. Diseño de viviendas, complejos residenciales y desarrollos inmobiliarios de alta calidad.",
               "url": "https://estudioandia.com",
@@ -183,7 +183,7 @@ export default function RootLayout({
               "inLanguage": "es-AR"
             })
           }
-        }
+          }
         />
       </head>
 
