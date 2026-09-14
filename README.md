@@ -15,7 +15,7 @@ Sitio web del Estudio de Arquitectura e Ingeniería Andia Andia, Mendoza.
 
 ## Requisitos
 
-- Node 20 (ver `.nvmrc`)
+- Node 24 (ver `.nvmrc`)
 - Variables de entorno en `.env.local` (ver sección siguiente)
 
 ## Variables de entorno
