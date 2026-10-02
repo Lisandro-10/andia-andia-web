@@ -6,6 +6,7 @@ import { CroquisGallery } from '@/components/sections/CroquisGallery'
 import { FAQ } from '@/components/sections/FAQ'
 import { ContactForm } from '@/components/sections/ContactForm'
 import type { Metadata } from 'next'
+import { absoluteUrl } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Andia Andia - Estudio de Arquitectura en Mendoza',
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     'realizaciones arquitectónicas',
   ],
   alternates: {
-    canonical: 'https://estudioandia.com/',
+    canonical: absoluteUrl(),
   },
 }
 

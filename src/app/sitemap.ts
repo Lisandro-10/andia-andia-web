@@ -1,27 +1,27 @@
 import { MetadataRoute } from 'next'
 import { listProjectsFromManifest } from '@/lib/manifest'
+import { absoluteUrl } from '@/lib/site'
 
 export const revalidate = 300
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://estudioandia.com'
   const currentDate = new Date()
 
   const staticPages: MetadataRoute.Sitemap = [
     {
-      url: baseUrl,
+      url: absoluteUrl(),
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
-      url: `${baseUrl}/portfolio`,
+      url: absoluteUrl('/portfolio'),
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/contacto`,
+      url: absoluteUrl('/contacto'),
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
@@ -30,7 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const projects = await listProjectsFromManifest()
   const projectPages: MetadataRoute.Sitemap = projects.map((project) => ({
-    url: `${baseUrl}/proyectos/${project.slug}`,
+    url: absoluteUrl(`/proyectos/${project.slug}`),
     lastModified: currentDate,
     changeFrequency: 'monthly' as const,
     priority: 0.8,

@@ -6,23 +6,22 @@ import dynamic from 'next/dynamic'
 import Counter from 'yet-another-react-lightbox/plugins/counter'
 import 'yet-another-react-lightbox/styles.css'
 import 'yet-another-react-lightbox/plugins/counter.css'
-import { getBlurDataURL } from '@/lib/generated/blur-placeholders'
+import { getBlurOrFallback } from '@/lib/blur'
+import { galleryImageAlt } from '@/lib/projects'
+import type { Project } from '@/types'
 
 // Deferred — only downloaded when the user first clicks an image (~40 KB saved on initial load)
 const Lightbox = dynamic(() => import('yet-another-react-lightbox'), { ssr: false })
 
-// Placeholder genérico para imágenes sin blur data
-const FALLBACK_BLUR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAnSURBVHgB7coxAQAACMOwgaL5d4Ir4EBSELshzpV0UNNBTQc1HdR0AKt6AwnwkFE3AAAAAElFTkSuQmCC'
-
 interface ImageGalleryProps {
   images: string[]
-  projectName: string
+  project: Pick<Project, 'name' | 'category' | 'location'>
 }
 
 const INITIAL_COUNT = 15 // 5 rows × 3 columns
 const LOAD_MORE_COUNT = 12
 
-export function ImageGallery({ images, projectName }: ImageGalleryProps) {
+export function ImageGallery({ images, project }: ImageGalleryProps) {
   const [open, setOpen] = useState(false)
   const [photoIndex, setPhotoIndex] = useState(0)
   const [lightboxMounted, setLightboxMounted] = useState(false)
@@ -71,7 +70,7 @@ export function ImageGallery({ images, projectName }: ImageGalleryProps) {
               {column.map((image, imageIndex) => {
                 const globalIndex = columnIndex * Math.ceil(images.length / 3) + imageIndex + 1
                 const isAboveFold = columnIndex < 3 && imageIndex < 2
-                const blurDataURL = isAboveFold ? (getBlurDataURL(image) || FALLBACK_BLUR) : undefined
+                const blurDataURL = isAboveFold ? getBlurOrFallback(image) : undefined
 
                 return (
                   <div
@@ -82,7 +81,7 @@ export function ImageGallery({ images, projectName }: ImageGalleryProps) {
                     <div className="relative aspect-[4/3]">
                       <Image
                         src={image}
-                        alt={`${projectName} - Imagen ${globalIndex}`}
+                        alt={galleryImageAlt(project, globalIndex)}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover transition-opacity duration-300 group-hover:opacity-90"

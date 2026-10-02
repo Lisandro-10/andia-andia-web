@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { absoluteUrl, SITE_URL } from '@/lib/site'
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -9,7 +10,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/'],
       },
     ],
-    sitemap: 'https://estudioandia.com/sitemap.xml',
-    host: 'https://estudioandia.com',
+    sitemap: absoluteUrl('/sitemap.xml'),
+    host: SITE_URL,
   }
 }

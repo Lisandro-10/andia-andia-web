@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { absoluteUrl } from '@/lib/site'
 import { ContactForm } from '@/components/sections/ContactForm'
 import { FaMapPin, FaEnvelope, FaWhatsapp } from 'react-icons/fa'
 
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     'Andia Andia contacto',
   ],
   alternates: {
-    canonical: 'https://estudioandia.com/contacto',
+    canonical: absoluteUrl('/contacto'),
   },
 }
 

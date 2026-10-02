@@ -1,9 +1,8 @@
 import { listProjectsFromManifest } from '@/lib/manifest'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getBlurDataURL } from '@/lib/generated/blur-placeholders'
-
-const FALLBACK_BLUR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAnSURBVHgB7coxAQAACMOwgaL5d4Ir4EBSELshzpV0UNNBTQc1HdR0AKt6AwnwkFE3AAAAAElFTkSuQmCC'
+import { getBlurOrFallback } from '@/lib/blur'
+import { projectImageAlt } from '@/lib/projects'
 
 export async function FeaturedProjects() {
   const allProjects = await listProjectsFromManifest()
@@ -34,12 +33,12 @@ export async function FeaturedProjects() {
                 <div className="relative aspect-[4/3]">
                   <Image
                     src={project.thumbnail}
-                    alt={project.name}
+                    alt={projectImageAlt(project)}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover will-change-transform transition-transform duration-500 ease-out scale-100 group-hover:scale-[1.03]"
                     placeholder="blur"
-                    blurDataURL={getBlurDataURL(project.thumbnail) || FALLBACK_BLUR}
+                    blurDataURL={getBlurOrFallback(project.thumbnail)}
                   />
                   <div className="absolute inset-0 bg-black/0 transition-colors duration-500 ease-out group-hover:bg-black/10" />
                 </div>
@@ -63,12 +62,12 @@ export async function FeaturedProjects() {
                 <div className="relative aspect-[4/3]">
                   <Image
                     src={project.thumbnail}
-                    alt={project.name}
+                    alt={projectImageAlt(project)}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover will-change-transform transition-transform duration-500 ease-out scale-100 group-hover:scale-[1.03]"
                     placeholder="blur"
-                    blurDataURL={getBlurDataURL(project.thumbnail) || FALLBACK_BLUR}
+                    blurDataURL={getBlurOrFallback(project.thumbnail)}
                   />
                   <div className="absolute inset-0 bg-black/0 transition-colors duration-500 ease-out group-hover:bg-black/10" />
                 </div>

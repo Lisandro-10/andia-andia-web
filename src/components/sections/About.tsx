@@ -1,9 +1,7 @@
 import { getCDNUrl } from '@/lib/cdn'
 import Image from 'next/image'
-import { getBlurDataURL } from '@/lib/generated/blur-placeholders'
+import { getBlurOrFallback } from '@/lib/blur'
 import { RevealSection } from '@/components/ui/RevealSection'
-
-const FALLBACK_BLUR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAnSURBVHgB7coxAQAACMOwgaL5d4Ir4EBSELshzpV0UNNBTQc1HdR0AKt6AwnwkFE3AAAAAElFTkSuQmCC'
 
 export function About() {
   return (
@@ -57,7 +55,7 @@ export function About() {
             className="object-cover"
             priority
             placeholder="blur"
-            blurDataURL={getBlurDataURL("layout/about.webp") || FALLBACK_BLUR}
+            blurDataURL={getBlurOrFallback("layout/about.webp")}
           />
         </div>
       </div>

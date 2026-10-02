@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { getProjectsByCategoryFromManifest } from '@/lib/manifest'
+import { projectImageAlt } from '@/lib/projects'
 import type { Project } from '@/types'
 
 interface RelatedProjectsProps {
@@ -30,7 +31,7 @@ export async function RelatedProjects({ currentSlug, category }: RelatedProjects
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image
                 src={project.thumbnail}
-                alt={`${project.name} - Proyecto de arquitectura en Mendoza`}
+                alt={projectImageAlt(project)}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
                 sizes="(max-width: 640px) 100vw, 33vw"

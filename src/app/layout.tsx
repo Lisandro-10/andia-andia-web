@@ -6,6 +6,7 @@ import './globals.css'
 import { Analytics } from '@vercel/analytics/next'
 import { FloatingWhatsApp } from '@/components/ui/FloatingWhatsApp'
 import { MotionProvider } from '@/components/providers/MotionProvider'
+import { absoluteUrl, ORGANIZATION_ID, SITE_URL } from '@/lib/site'
 
 const workSans = Work_Sans({
   subsets: ['latin'],
@@ -15,7 +16,7 @@ const workSans = Work_Sans({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://estudioandia.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Estudio de Arquitectura e Ingeniería en Mendoza | Andia Andia',
     template: '%s | Andia Andia',
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'es_AR',
-    url: 'https://estudioandia.com',
+    url: SITE_URL,
     siteName: 'Estudio Andia Andia',
     title: 'Estudio de Arquitectura e Ingeniería en Mendoza | Andia Andia',
     description: 'Estudio de arquitectura e ingeniería en Mendoza. Diseño de viviendas, complejos residenciales y desarrollos inmobiliarios de alta calidad.',
@@ -93,12 +94,12 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "@id": "https://estudioandia.com/#website",
-              "url": "https://estudioandia.com",
+              "@id": absoluteUrl("/#website"),
+              "url": SITE_URL,
               "name": "Estudio Andia Andia",
               "description": "Estudio de arquitectura e ingeniería en Mendoza, Argentina.",
               "publisher": {
-                "@id": "https://estudioandia.com/#organization"
+                "@id": ORGANIZATION_ID
               },
               "inLanguage": "es-AR"
             })
@@ -110,19 +111,19 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": ["ArchitectsOffice", "LocalBusiness"],
-              "@id": "https://estudioandia.com/#organization",
+              "@id": ORGANIZATION_ID,
               "name": "Estudio de Arquitectura e Ingeniería en Mendoza | Andia Andia",
               "legalName": "Lisandro Andia - Arquitecto",
               "description": "Estudio de arquitectura e ingeniería en Mendoza. Diseño de viviendas, complejos residenciales y desarrollos inmobiliarios de alta calidad.",
-              "url": "https://estudioandia.com",
+              "url": SITE_URL,
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://estudioandia.com/logo.png",
+                "url": absoluteUrl("/logo.png"),
                 "width": "600",
                 "height": "200"
               },
               "image": [
-                "https://estudioandia.com/og-image.jpg",
+                absoluteUrl("/og-image.jpg"),
                 ...(cdnUrl ? [`${cdnUrl}/hero-home.jpg`] : [])
               ],
               "telephone": "+54 9 261-537-1582",

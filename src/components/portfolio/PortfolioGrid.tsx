@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { motion } from 'motion/react'
 import { Project } from '@/types'
 import { staggerContainer, staggerItem } from '@/lib/motion'
+import { projectImageAlt } from '@/lib/projects'
 
 interface PortfolioGridProps {
   projects: Project[]
@@ -30,7 +31,7 @@ export function PortfolioGrid({ projects }: PortfolioGridProps) {
               )}
               <Image
                 src={project.thumbnail}
-                alt={project.name}
+                alt={projectImageAlt(project)}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className={`object-cover ${

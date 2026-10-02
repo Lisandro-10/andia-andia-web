@@ -7,13 +7,11 @@ import { PortfolioGrid } from './PortfolioGrid'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'motion/react'
 import { staggerContainerSlow, staggerItem } from '@/lib/motion'
+import { CATEGORIES } from '@/lib/projects'
 
 const categories = [
   { value: 'all', label: 'Todas' },
-  { value: 'vivienda', label: 'Viviendas Unifamiliares' },
-  { value: 'inmobiliario', label: 'Desarrollos Inmobiliarios' },
-  { value: 'complejos', label: 'Complejos Residenciales' },
-  { value: 'croquis', label: 'Croquis' },
+  ...Object.entries(CATEGORIES).map(([value, { label }]) => ({ value, label })),
 ]
 
 interface PortfolioContentProps {

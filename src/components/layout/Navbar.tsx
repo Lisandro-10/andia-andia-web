@@ -6,9 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { getLayoutUrl } from '@/lib/cdn'
-import { getBlurDataURL } from '@/lib/generated/blur-placeholders'
-
-const FALLBACK_BLUR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAnSURBVHgB7coxAQAACMOwgaL5d4Ir4EBSELshzpV0UNNBTQc1HdR0AKt6AwnwkFE3AAAAAElFTkSuQmCC'
+import { getBlurOrFallback } from '@/lib/blur'
 
 export function Navbar() {
   const [isSticky, setIsSticky] = useState(false)
@@ -120,7 +118,7 @@ export function Navbar() {
                   height={60}
                   priority
                   placeholder="blur"
-                  blurDataURL={getBlurDataURL('layout/logo-navbar.png') || FALLBACK_BLUR}
+                  blurDataURL={getBlurOrFallback('layout/logo-navbar.png')}
                 />
               </div>
             </Link>

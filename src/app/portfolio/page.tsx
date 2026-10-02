@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { absoluteUrl } from '@/lib/site'
 import Image from 'next/image'
 import { Suspense } from 'react'
 import { listProjectsFromManifest, listCroquisAsProjects } from '@/lib/manifest'
@@ -30,7 +31,7 @@ export async function generateMetadata({
       'realizaciones arquitectónicas',
     ],
     openGraph: {
-      url: 'https://estudioandia.com/portfolio',
+      url: absoluteUrl('/portfolio'),
       title: 'Portfolio de Proyectos | Estudio Andia Andia',
       description: 'Descubre nuestros proyectos de arquitectura e ingeniería en Mendoza',
       images: [
@@ -42,7 +43,7 @@ export async function generateMetadata({
       type: 'website',
     },
     alternates: {
-      canonical: 'https://estudioandia.com/portfolio',
+      canonical: absoluteUrl('/portfolio'),
     },
     // Prevent category filter URLs from being indexed as separate pages
     robots: isFiltered

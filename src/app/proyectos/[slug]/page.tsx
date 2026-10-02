@@ -5,6 +5,8 @@ import { listProjectsFromManifest, getProjectFromManifest } from '@/lib/manifest
 import { ProjectHero } from '@/components/ui/ProjectHero'
 import { ImageGallery } from '@/components/ui/ImageGallery'
 import { RelatedProjects } from '@/components/ui/RelatedProjects'
+import { CATEGORIES, projectImageAlt } from '@/lib/projects'
+import { absoluteUrl, ORGANIZATION_ID } from '@/lib/site'
 
 export const revalidate = 300
 
@@ -31,30 +33,16 @@ export async function generateMetadata({
     return { title: 'Proyecto no encontrado' }
   }
 
-  const categoryKeywords = {
-    vivienda: ['vivienda unifamiliar', 'casa', 'diseño residencial'],
-    complejos: ['complejo residencial', 'desarrollo habitacional', 'múltiples unidades'],
-    inmobiliario: ['desarrollo inmobiliario', 'proyecto inmobiliario', 'inversión inmobiliaria'],
-    croquis: ['croquis arquitectónico', 'boceto', 'diseño conceptual'],
-  }
-
-  const categoryLabel =
-    project.category === 'vivienda'
-      ? 'Vivienda unifamiliar de alta calidad.'
-      : project.category === 'complejos'
-      ? 'Complejo residencial moderno.'
-      : project.category === 'inmobiliario'
-      ? 'Desarrollo inmobiliario profesional.'
-      : 'Croquis y boceto arquitectónico conceptual.'
+  const category = CATEGORIES[project.category]
 
   return {
     title: `${project.name} - Proyecto de Arquitectura en Mendoza`,
-    description: `${project.description} Diseño arquitectónico por Andia Andia en Mendoza, Argentina. ${categoryLabel}`,
+    description: `${project.description} Diseño arquitectónico por Andia Andia en Mendoza, Argentina. ${category.description}`,
     keywords: [
       project.name,
       'arquitectura Mendoza',
       'proyecto arquitectónico Mendoza',
-      ...categoryKeywords[project.category],
+      ...category.keywords,
       'diseño arquitectónico',
       'Andia Andia',
       'arquitectura contemporánea',
@@ -67,7 +55,7 @@ export async function generateMetadata({
           url: project.heroImage,
           width: 1200,
           height: 630,
-          alt: `${project.name} - Proyecto de arquitectura en Mendoza por Andia Andia`,
+          alt: projectImageAlt(project),
         },
       ],
       type: 'article',
@@ -80,7 +68,7 @@ export async function generateMetadata({
       images: [project.heroImage],
     },
     alternates: {
-      canonical: `https://estudioandia.com/proyectos/${project.slug}`,
+      canonical: absoluteUrl(`/proyectos/${project.slug}`),
     },
   }
 }
@@ -104,19 +92,19 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         '@type': 'ListItem',
         position: 1,
         name: 'Inicio',
-        item: 'https://estudioandia.com',
+        item: absoluteUrl(),
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Portfolio',
-        item: 'https://estudioandia.com/portfolio',
+        item: absoluteUrl('/portfolio'),
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: project.name,
-        item: `https://estudioandia.com/proyectos/${project.slug}`,
+        item: absoluteUrl(`/proyectos/${project.slug}`),
       },
     ],
   }
@@ -125,22 +113,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const projectSchema = {
     '@context': 'https://schema.org',
     '@type': 'CreativeWork',
-    '@id': `https://estudioandia.com/proyectos/${project.slug}#creativework`,
+    '@id': absoluteUrl(`/proyectos/${project.slug}#creativework`),
     name: project.name,
     description: project.description,
     image: [project.heroImage, ...project.gallery.slice(0, 5)],
     creator: {
       '@type': 'Organization',
-      '@id': 'https://estudioandia.com/#organization',
+      '@id': ORGANIZATION_ID,
     },
-    genre:
-      project.category === 'vivienda'
-        ? 'Arquitectura Residencial'
-        : project.category === 'complejos'
-        ? 'Complejo Residencial'
-        : project.category === 'inmobiliario'
-        ? 'Desarrollo Inmobiliario'
-        : 'Croquis Arquitectónico',
+    genre: CATEGORIES[project.category].genre,
     inLanguage: 'es-AR',
     ...(project.year && { dateCreated: String(project.year) }),
     ...(project.location && {
@@ -164,7 +145,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       <article className="min-h-screen">
         {/* Hero */}
-        <ProjectHero name={project.name} heroImage={project.heroImage} />
+        <ProjectHero project={project} />
 
         {/* Project info — indexable text content */}
         <section className="pt-10 px-4 sm:px-6 lg:px-32">
@@ -229,7 +210,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {hasGallery && (
           <section aria-label={`Galería de imágenes - ${project.name}`}>
             <h2 className="sr-only">Galería de imágenes</h2>
-            <ImageGallery images={project.gallery} projectName={project.name} />
+            <ImageGallery images={project.gallery} project={project} />
           </section>
         )}
 
